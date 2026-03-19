@@ -39,6 +39,8 @@ pip install pandas scikit-learn codecarbon lightgbm optuna
 
 ---
 
+
+
 ## Phase 2: Algorithmic Optimization (The "After" Picture)
 **Goal:** Apply clever techniques to make the training process faster and more energy-efficient, proving that we can reduce emissions.
 
