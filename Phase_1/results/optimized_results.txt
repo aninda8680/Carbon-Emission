@@ -1,0 +1,46 @@
+======================================================================
+CARBON-OPTIMIZED ML TRAINING RESULTS
+======================================================================
+
+LightGBM + Feature Selection:
+  Accuracy: 1.0000
+  F1 Score: 1.0000
+  Precision: 1.0000
+  Recall: 1.0000
+  CO2: 0.000010 kg
+  Training Time: 0.08 seconds
+  Features Used: 6
+  CEGI: 101232.38
+
+PCA + LightGBM:
+  Accuracy: 0.9850
+  F1 Score: 0.9852
+  Precision: 0.9860
+  Recall: 0.9850
+  CO2: 0.000016 kg
+  Training Time: 0.07 seconds
+  Features Used: 4
+  CEGI: 60388.50
+
+Minimal Complexity:
+  Accuracy: 0.9850
+  F1 Score: 0.9852
+  Precision: 0.9860
+  Recall: 0.9850
+  CO2: 0.000018 kg
+  Training Time: 0.02 seconds
+  Features Used: 4
+  CEGI: 54791.24
+
+Best Model: LightGBM + Feature Selection
+Total Optimization Techniques Applied: 8
+
+Optimization Techniques:
+1. Memory-efficient data loading (float32)
+2. Feature selection (mutual information)
+3. Early stopping mechanism
+4. Histogram-based gradient boosting
+5. PCA dimensionality reduction
+6. Optimized hyperparameters
+7. Efficient batch processing
+8. Model complexity reduction
