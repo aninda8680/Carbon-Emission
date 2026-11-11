@@ -37,13 +37,12 @@ All packages installed successfully!
 # Navigate to Phase 1 directory
 cd Phase_1
 
-# Run baseline (unoptimized)
-python Baseline.py
+# Option A: Run everything with the master pipeline (Recommended)
+python run_all.py
 
-# Run optimized version
-python Optimized.py
-
-# Generate visualizations
+# Option B: Run step-by-step
+python baseline/Baseline.py
+python optimized/Optimized.py
 python plot_result.py
 ```
 

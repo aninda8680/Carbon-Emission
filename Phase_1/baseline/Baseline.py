@@ -17,18 +17,27 @@ Characteristics:
 
 import time
 import warnings
+from pathlib import Path
+import sys
+
 warnings.filterwarnings('ignore')
 
-import sys
-sys.path.append('..')
+# Dynamically resolve directories so script can be run from anywhere
+SCRIPT_DIR = Path(__file__).resolve().parent
+PHASE1_DIR = SCRIPT_DIR.parent
+ROOT_DIR = PHASE1_DIR.parent
+DATA_PATH = ROOT_DIR / "child_health_westbengal_1000.csv"
+RESULTS_DIR = PHASE1_DIR / "results"
+RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+
+# Add Phase_1 to sys.path to import utils
+if str(PHASE1_DIR) not in sys.path:
+    sys.path.insert(0, str(PHASE1_DIR))
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 from codecarbon import EmissionsTracker
 from utils import load_and_prepare_data
-
-# ✅ CORRECT PATH
-DATA_PATH = "../../child_health_westbengal_1000.csv"
 
 print("=" * 70)
 print("BASELINE ML TRAINING (UNOPTIMIZED)")
@@ -90,24 +99,24 @@ print(f"  Features:  {X_train.shape[1]} (all features)")
 
 # Save results
 print("\n[3/3] Saving results...")
-with open("../results/baseline_results.txt", "w") as f:
+with open(RESULTS_DIR / "baseline_results.txt", "w") as f:
     f.write("=" * 70 + "\n")
     f.write("BASELINE ML TRAINING RESULTS (UNOPTIMIZED)\n")
     f.write("=" * 70 + "\n\n")
-    f.write(f"Model: RandomForest\n")
-    f.write(f"Accuracy: {accuracy:.4f}\n")
-    f.write(f"F1 Score: {f1:.4f}\n")
-    f.write(f"Precision: {precision:.4f}\n")
-    f.write(f"Recall: {recall:.4f}\n")
-    f.write(f"CO2: {emissions:.6f} kg\n")
-    f.write(f"Training Time: {training_time:.2f} seconds\n")
-    f.write(f"Features Used: {X_train.shape[1]}\n")
-    f.write(f"Memory Optimization: No\n")
-    f.write(f"Early Stopping: No\n")
-    f.write(f"Feature Selection: No\n")
-    f.write(f"Hyperparameter Tuning: No\n")
+    f.write("RandomForest:\n")
+    f.write(f"  Accuracy: {accuracy:.4f}\n")
+    f.write(f"  F1 Score: {f1:.4f}\n")
+    f.write(f"  Precision: {precision:.4f}\n")
+    f.write(f"  Recall: {recall:.4f}\n")
+    f.write(f"  CO2: {emissions:.6f} kg\n")
+    f.write(f"  Training Time: {training_time:.2f} seconds\n")
+    f.write(f"  Features Used: {X_train.shape[1]}\n")
+    f.write("  Memory Optimization: No\n")
+    f.write("  Early Stopping: No\n")
+    f.write("  Feature Selection: No\n")
+    f.write("  Hyperparameter Tuning: No\n")
 
-print("✓ Results saved to '../results/baseline_results.txt'")
+print(f"✓ Results saved to '{RESULTS_DIR / 'baseline_results.txt'}'")
 print("\n" + "=" * 70)
 print("BASELINE TRAINING COMPLETE!")
 print("=" * 70)

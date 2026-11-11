@@ -2,15 +2,15 @@
 BASELINE ML TRAINING RESULTS (UNOPTIMIZED)
 ======================================================================
 
-Model: RandomForest
-Accuracy: 1.0000
-F1 Score: 1.0000
-Precision: 1.0000
-Recall: 1.0000
-CO2: 0.000000 kg
-Training Time: 0.20 seconds
-Features Used: 7
-Memory Optimization: No
-Early Stopping: No
-Feature Selection: No
-Hyperparameter Tuning: No
+RandomForest:
+  Accuracy: 1.0000
+  F1 Score: 1.0000
+  Precision: 1.0000
+  Recall: 1.0000
+  CO2: 0.000012 kg
+  Training Time: 0.25 seconds
+  Features Used: 7
+  Memory Optimization: No
+  Early Stopping: No
+  Feature Selection: No
+  Hyperparameter Tuning: No

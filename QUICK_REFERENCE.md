@@ -23,12 +23,15 @@
 
 ```bash
 # Install
-pip install pandas scikit-learn lightgbm codecarbon matplotlib numpy
+pip install pandas scikit-learn lightgbm codecarbon matplotlib numpy optuna
 
-# Run
+# Run everything at once (Recommended)
 cd Phase_1
-python Baseline.py
-python Optimized.py
+python run_all.py
+
+# Or run step-by-step
+python baseline/Baseline.py
+python optimized/Optimized.py
 python plot_result.py
 ```
 

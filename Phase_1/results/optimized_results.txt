@@ -8,29 +8,29 @@ LightGBM + Feature Selection:
   Precision: 1.0000
   Recall: 1.0000
   CO2: 0.000010 kg
-  Training Time: 0.08 seconds
+  Training Time: 0.04 seconds
   Features Used: 6
-  CEGI: 101232.38
+  CEGI: 97881.07
 
 PCA + LightGBM:
   Accuracy: 0.9850
   F1 Score: 0.9852
   Precision: 0.9860
   Recall: 0.9850
-  CO2: 0.000016 kg
-  Training Time: 0.07 seconds
+  CO2: 0.000014 kg
+  Training Time: 0.04 seconds
   Features Used: 4
-  CEGI: 60388.50
+  CEGI: 69485.09
 
 Minimal Complexity:
   Accuracy: 0.9850
   F1 Score: 0.9852
   Precision: 0.9860
   Recall: 0.9850
-  CO2: 0.000018 kg
-  Training Time: 0.02 seconds
+  CO2: 0.000017 kg
+  Training Time: 0.01 seconds
   Features Used: 4
-  CEGI: 54791.24
+  CEGI: 59680.89
 
 Best Model: LightGBM + Feature Selection
 Total Optimization Techniques Applied: 8

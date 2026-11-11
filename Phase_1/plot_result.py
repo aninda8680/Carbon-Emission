@@ -14,13 +14,21 @@ optimized models across multiple metrics:
 import matplotlib.pyplot as plt
 import numpy as np
 import re
+from pathlib import Path
+import sys
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+RESULTS_DIR = SCRIPT_DIR / "results"
+VISUALIZATIONS_DIR = SCRIPT_DIR / "visualizations"
+VISUALIZATIONS_DIR.mkdir(parents=True, exist_ok=True)
 
 def parse_results_file(filename):
     """Parse results file and extract metrics"""
     results = []
     
-    # Adjust path to look in results folder
-    filepath = f"results/{filename}"
+    filepath = RESULTS_DIR / filename
+    if not filepath.exists():
+        raise FileNotFoundError(f"{filepath} not found")
     
     with open(filepath, "r") as f:
         content = f.read()
@@ -31,11 +39,15 @@ def parse_results_file(filename):
     for section in sections:
         if 'Accuracy:' in section and 'CO2:' in section:
             model_data = {}
+            lines = [l.strip() for l in section.strip().split('\n') if l.strip()]
+            if not lines:
+                continue
             
-            # Extract model name
-            lines = section.strip().split('\n')
-            if lines[0].endswith(':'):
-                model_data['name'] = lines[0][:-1]
+            header = lines[0]
+            if header.startswith('Model:'):
+                model_data['name'] = header.split(':', 1)[1].strip()
+            elif header.endswith(':'):
+                model_data['name'] = header[:-1].strip()
             else:
                 continue
             
@@ -64,26 +76,27 @@ try:
     baseline_results = parse_results_file("baseline_results.txt")
     baseline = baseline_results[0] if baseline_results else None
 except FileNotFoundError:
-    print("Warning: results/baseline_results.txt not found. Run baseline/Baseline.py first.")
+    print("Warning: baseline_results.txt not found. Run baseline/Baseline.py first.")
     baseline = None
 
 # Parse optimized results
 try:
     optimized_results = parse_results_file("optimized_results.txt")
 except FileNotFoundError:
-    print("Error: results/optimized_results.txt not found. Run optimized/Optimized.py first.")
+    print("Error: optimized_results.txt not found. Run optimized/Optimized.py first.")
     exit(1)
 
 # Combine all results
 all_results = []
 if baseline:
+    base_co2_safe = baseline['co2'] if baseline['co2'] > 0 else 1e-10
     all_results.append({
         'name': 'Baseline\n(RandomForest)',
         'accuracy': baseline['accuracy'],
         'f1': baseline.get('f1', baseline['accuracy']),
         'co2': baseline['co2'],
         'time': baseline.get('time', 0),
-        'cegi': baseline.get('cegi', baseline['accuracy'] / baseline['co2'])
+        'cegi': baseline.get('cegi', baseline['accuracy'] / base_co2_safe)
     })
 
 for opt in optimized_results:
@@ -91,13 +104,14 @@ for opt in optimized_results:
     name = opt['name'].replace('LightGBM + Feature Selection', 'LGBM+FS')
     name = name.replace('PCA + LightGBM', 'PCA+LGBM')
     name = name.replace('Minimal Complexity', 'Minimal')
+    opt_co2_safe = opt['co2'] if opt['co2'] > 0 else 1e-10
     all_results.append({
         'name': name,
         'accuracy': opt['accuracy'],
         'f1': opt.get('f1', opt['accuracy']),
         'co2': opt['co2'],
         'time': opt.get('time', 0),
-        'cegi': opt.get('cegi', opt['accuracy'] / opt['co2'])
+        'cegi': opt.get('cegi', opt['accuracy'] / opt_co2_safe)
     })
 
 # Extract data for plotting
@@ -152,8 +166,8 @@ for bar, f1 in zip(bars2, f1_scores):
              ha='center', va='bottom', fontsize=10, fontweight='bold')
 
 plt.tight_layout()
-plt.savefig('visualizations/accuracy_comparison.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: visualizations/accuracy_comparison.png")
+plt.savefig(VISUALIZATIONS_DIR / 'accuracy_comparison.png', dpi=300, bbox_inches='tight')
+print(f"✓ Saved: {VISUALIZATIONS_DIR / 'accuracy_comparison.png'}")
 
 # ============================================================================
 # FIGURE 2: CO2 Emissions and Training Time
@@ -175,17 +189,19 @@ for bar, co2 in zip(bars1, emissions):
              f'{co2:.6f}',
              ha='center', va='bottom', fontsize=9, fontweight='bold')
 
-# Calculate reduction percentages
-if baseline:
+# Calculate reduction percentages safely
+if baseline and len(emissions) > 0:
     baseline_co2 = emissions[0]
     for i, (bar, co2) in enumerate(zip(bars1, emissions)):
-        if i > 0:  # Skip baseline
+        if i > 0 and baseline_co2 > 0:  # Skip baseline
             reduction = ((baseline_co2 - co2) / baseline_co2) * 100
+            label = f'-{reduction:.1f}%' if reduction >= 0 else f'+{-reduction:.1f}%'
+            box_color = 'green' if reduction >= 0 else 'orange'
             ax1.text(bar.get_x() + bar.get_width()/2., bar.get_height() * 0.5,
-                     f'-{reduction:.1f}%',
+                     label,
                      ha='center', va='center', fontsize=9, 
                      color='white', fontweight='bold',
-                     bbox=dict(boxstyle='round', facecolor='green', alpha=0.8))
+                     bbox=dict(boxstyle='round', facecolor=box_color, alpha=0.8))
 
 # Training time comparison
 if any(t > 0 for t in times):
@@ -196,10 +212,10 @@ if any(t > 0 for t in times):
     ax2.tick_params(axis='x', rotation=15)
     
     # Add value labels
-    for bar, time in zip(bars2, times):
+    for bar, time_val in zip(bars2, times):
         height = bar.get_height()
         ax2.text(bar.get_x() + bar.get_width()/2., height,
-                 f'{time:.2f}s',
+                 f'{time_val:.2f}s',
                  ha='center', va='bottom', fontsize=10, fontweight='bold')
 else:
     ax2.text(0.5, 0.5, 'Training time data not available',
@@ -208,8 +224,8 @@ else:
     ax2.set_yticks([])
 
 plt.tight_layout()
-plt.savefig('visualizations/emissions_time_comparison.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: visualizations/emissions_time_comparison.png")
+plt.savefig(VISUALIZATIONS_DIR / 'emissions_time_comparison.png', dpi=300, bbox_inches='tight')
+print(f"✓ Saved: {VISUALIZATIONS_DIR / 'emissions_time_comparison.png'}")
 
 # ============================================================================
 # FIGURE 3: Carbon Efficiency Gain Index (CEGI)
@@ -237,8 +253,8 @@ bars[best_idx].set_edgecolor('darkgoldenrod')
 bars[best_idx].set_linewidth(3)
 
 plt.tight_layout()
-plt.savefig('visualizations/cegi_comparison.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: visualizations/cegi_comparison.png")
+plt.savefig(VISUALIZATIONS_DIR / 'cegi_comparison.png', dpi=300, bbox_inches='tight')
+print(f"✓ Saved: {VISUALIZATIONS_DIR / 'cegi_comparison.png'}")
 
 # ============================================================================
 # FIGURE 4: Accuracy vs CO2 Emissions (Trade-off Analysis)
@@ -274,8 +290,8 @@ ax.axhline(y=max(accuracies) * 0.95, color='green', linestyle='--',
 ax.legend(loc='lower left', fontsize=10)
 
 plt.tight_layout()
-plt.savefig('visualizations/accuracy_vs_emissions.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: visualizations/accuracy_vs_emissions.png")
+plt.savefig(VISUALIZATIONS_DIR / 'accuracy_vs_emissions.png', dpi=300, bbox_inches='tight')
+print(f"✓ Saved: {VISUALIZATIONS_DIR / 'accuracy_vs_emissions.png'}")
 
 # ============================================================================
 # FIGURE 5: Comprehensive Dashboard
@@ -324,25 +340,29 @@ summary_text = "OPTIMIZATION SUMMARY\n" + "="*30 + "\n\n"
 if baseline:
     best_opt = all_results[1] if len(all_results) > 1 else all_results[0]
     
-    co2_reduction = ((baseline['co2'] - best_opt['co2']) / baseline['co2']) * 100
-    acc_change = ((best_opt['accuracy'] - baseline['accuracy']) / baseline['accuracy']) * 100
+    co2_reduction = (((baseline['co2'] - best_opt['co2']) / baseline['co2']) * 100) if baseline['co2'] > 0 else 0.0
+    acc_change = (((best_opt['accuracy'] - baseline['accuracy']) / baseline['accuracy']) * 100) if baseline['accuracy'] > 0 else 0.0
+    time_speedup = (baseline['time'] / best_opt['time']) if best_opt['time'] > 0 else 1.0
     
     summary_text += f"Baseline Model:\n"
     summary_text += f"  Accuracy: {baseline['accuracy']:.4f}\n"
-    summary_text += f"  CO2: {baseline['co2']:.6f} kg\n\n"
+    summary_text += f"  CO2: {baseline['co2']:.6f} kg\n"
+    summary_text += f"  Time: {baseline['time']:.2f}s\n\n"
     
     summary_text += f"Best Optimized:\n"
-    summary_text += f"  {best_opt['name']}\n"
+    summary_text += f"  {best_opt['name'].replace(chr(10), ' ')}\n"
     summary_text += f"  Accuracy: {best_opt['accuracy']:.4f}\n"
-    summary_text += f"  CO2: {best_opt['co2']:.6f} kg\n\n"
+    summary_text += f"  CO2: {best_opt['co2']:.6f} kg\n"
+    summary_text += f"  Time: {best_opt['time']:.2f}s\n\n"
     
     summary_text += f"Improvements:\n"
+    summary_text += f"  Speedup: {time_speedup:.1f}x faster\n"
     summary_text += f"  CO2 Reduction: {co2_reduction:.1f}%\n"
     summary_text += f"  Accuracy Change: {acc_change:+.1f}%\n\n"
     
     summary_text += f"Best CEGI Model:\n"
     best_cegi_idx = cegis.index(max(cegis))
-    summary_text += f"  {models[best_cegi_idx]}\n"
+    summary_text += f"  {models[best_cegi_idx].replace(chr(10), ' ')}\n"
     summary_text += f"  CEGI: {max(cegis):.0f}\n\n"
 
 summary_text += "Optimization Techniques:\n"
@@ -361,16 +381,16 @@ ax4.text(0.1, 0.95, summary_text, transform=ax4.transAxes,
 
 plt.suptitle('Carbon-Optimized ML Training Dashboard', 
              fontsize=16, fontweight='bold', y=0.98)
-plt.savefig('visualizations/comprehensive_dashboard.png', dpi=300, bbox_inches='tight')
-print("✓ Saved: visualizations/comprehensive_dashboard.png")
+plt.savefig(VISUALIZATIONS_DIR / 'comprehensive_dashboard.png', dpi=300, bbox_inches='tight')
+print(f"✓ Saved: {VISUALIZATIONS_DIR / 'comprehensive_dashboard.png'}")
 
 print("\n" + "=" * 70)
 print("VISUALIZATION COMPLETE!")
 print("=" * 70)
 print("\nGenerated files:")
-print("  1. visualizations/accuracy_comparison.png")
-print("  2. visualizations/emissions_time_comparison.png")
-print("  3. visualizations/cegi_comparison.png")
-print("  4. visualizations/accuracy_vs_emissions.png")
-print("  5. visualizations/comprehensive_dashboard.png")
+print(f"  1. {VISUALIZATIONS_DIR / 'accuracy_comparison.png'}")
+print(f"  2. {VISUALIZATIONS_DIR / 'emissions_time_comparison.png'}")
+print(f"  3. {VISUALIZATIONS_DIR / 'cegi_comparison.png'}")
+print(f"  4. {VISUALIZATIONS_DIR / 'accuracy_vs_emissions.png'}")
+print(f"  5. {VISUALIZATIONS_DIR / 'comprehensive_dashboard.png'}")
 print("\n" + "=" * 70)

@@ -52,13 +52,11 @@ def main():
     print("  1. Baseline model (RandomForest)")
     print("  2. Optimized models (LightGBM variants)")
     print("  3. Visualization generation")
-    print("\nEstimated time: 1-2 minutes")
     print("="*70)
     
-    input("\nPress Enter to continue...")
-    
     # Get the Phase_1 directory
-    phase1_dir = Path(__file__).parent
+    phase1_dir = Path(__file__).resolve().parent
+    py_exec = sys.executable
     
     # Step 1: Run Baseline
     print("\n\n" + "="*70)
@@ -66,7 +64,7 @@ def main():
     print("="*70)
     
     baseline_dir = phase1_dir / "baseline"
-    if not run_command("python Baseline.py", cwd=baseline_dir):
+    if not run_command(f'"{py_exec}" Baseline.py', cwd=baseline_dir):
         print("\n✗ Baseline failed. Stopping.")
         sys.exit(1)
     
@@ -76,7 +74,7 @@ def main():
     print("="*70)
     
     optimized_dir = phase1_dir / "optimized"
-    if not run_command("python Optimized.py", cwd=optimized_dir):
+    if not run_command(f'"{py_exec}" Optimized.py', cwd=optimized_dir):
         print("\n✗ Optimized failed. Stopping.")
         sys.exit(1)
     
@@ -85,7 +83,7 @@ def main():
     print("STEP 3/3: GENERATING VISUALIZATIONS")
     print("="*70)
     
-    if not run_command("python plot_result.py", cwd=phase1_dir):
+    if not run_command(f'"{py_exec}" plot_result.py', cwd=phase1_dir):
         print("\n✗ Visualization failed. Stopping.")
         sys.exit(1)
     

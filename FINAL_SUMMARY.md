@@ -182,18 +182,17 @@ Project Root/
 
 ```bash
 # Install dependencies
-pip install pandas scikit-learn lightgbm codecarbon matplotlib numpy
+pip install pandas scikit-learn lightgbm codecarbon matplotlib numpy optuna
 
 # Navigate to Phase 1
 cd Phase_1
 
-# Run baseline
-python Baseline.py
+# Run complete pipeline at once
+python run_all.py
 
-# Run optimized
-python Optimized.py
-
-# Generate visualizations
+# Or run step-by-step
+python baseline/Baseline.py
+python optimized/Optimized.py
 python plot_result.py
 ```
 

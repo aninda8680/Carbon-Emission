@@ -41,7 +41,7 @@ Dataset Name: Child Health West Bengal Dataset
 * Dataset Information:
   * Total Samples: 1000
   * Features: 7
-  * Target Variable: Binary Classification
+  * Target Variable: Multiclass Classification (Normal, Moderate, Severe)
 * Preprocessing Steps:
   * Missing Value Handling
   * Label Encoding
