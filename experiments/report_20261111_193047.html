@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carbon-Aware AutoML Experiment Report</title>
+<style>
+
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            line-height: 1.55;
+            color: #1e293b;
+            background: #f8fafc;
+            margin: 0;
+            padding: 24px;
+        }
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .report-header {
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 28px 36px;
+        }
+        .report-header h1 { margin: 0 0 8px 0; font-size: 1.75rem; }
+        .subtitle { font-size: 0.88rem; color: #cbd5e1; }
+        .toc {
+            background: #f1f5f9;
+            padding: 12px 36px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.82rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 14px;
+        }
+        .toc a { color: #1d4ed8; text-decoration: none; }
+        .toc a:hover { text-decoration: underline; }
+        .section {
+            padding: 22px 36px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .section h2 {
+            margin: 0 0 14px 0;
+            font-size: 1.15rem;
+            color: #0f172a;
+            border-left: 4px solid #2563eb;
+            padding-left: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0 14px 0;
+            font-size: 0.88rem;
+        }
+        th {
+            background: #1e293b;
+            color: #f8fafc;
+            text-align: left;
+            padding: 8px 10px;
+            font-weight: 600;
+        }
+        td {
+            padding: 7px 10px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+        tr:nth-child(even) td { background: #f8fafc; }
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 12px;
+            margin: 10px 0;
+        }
+        .kpi-card {
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 12px 14px;
+            background: #f8fafc;
+        }
+        .kpi-label { font-size: 0.78rem; color: #475569; text-transform: uppercase; }
+        .kpi-value { font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-top: 4px; }
+        .badge {
+            display: inline-block;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            vertical-align: middle;
+        }
+        .badge-measured { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+        .badge-estimated { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+        .badge-calculated { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+        .sev-critical { background: #fee2e2; color: #991b1b; }
+        .sev-high { background: #ffedd5; color: #9a3412; }
+        .sev-medium { background: #fef9c3; color: #854d0e; }
+        .sev-low { background: #e0f2fe; color: #075985; }
+        .callout {
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+        .callout-info { background: #eff6ff; border-left: 4px solid #2563eb; }
+        .callout-warn { background: #fffbeb; border-left: 4px solid #d97706; }
+        .callout-danger { background: #fef2f2; border-left: 4px solid #dc2626; }
+        .callout-success { background: #f0fdf4; border-left: 4px solid #16a34a; }
+        .muted { color: #64748b; font-size: 0.88rem; }
+        code {
+            background: #f1f5f9;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 0.85em;
+        }
+        .report-footer {
+            text-align: center;
+            padding: 16px;
+            font-size: 0.8rem;
+            color: #64748b;
+            background: #f1f5f9;
+        }
+        
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="report-header">
+    <h1>Carbon-Aware AutoML Experiment Report</h1>
+    <div class="subtitle">
+      Generated: 2026-11-11T19:29:41.035202+00:00 &nbsp;|&nbsp;
+      Provenance Legend:
+      <span class="badge badge-measured">MEASURED</span>
+      <span class="badge badge-estimated">ESTIMATED</span>
+      <span class="badge badge-calculated">CALCULATED</span>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <strong>Sections:</strong>
+    <a href="#sec-1">1. Executive Summary</a>
+    <a href="#sec-2">2. Fingerprint</a>
+    <a href="#sec-3">3. Profile</a>
+    <a href="#sec-4">4. Integrity</a>
+    <a href="#sec-5">5. Leakage</a>
+    <a href="#sec-6">6. Preprocessing</a>
+    <a href="#sec-7">7. Validation</a>
+    <a href="#sec-8">8. Models</a>
+    <a href="#sec-9">9. Confusion Matrix</a>
+    <a href="#sec-10">10. Per-Class Recall</a>
+    <a href="#sec-11">11. Calibration</a>
+    <a href="#sec-12">12. Feature Importance</a>
+    <a href="#sec-13">13. Ablation</a>
+    <a href="#sec-14">14. Training Energy</a>
+    <a href="#sec-15">15. Inference Energy</a>
+    <a href="#sec-16">16. CO2e Estimates</a>
+    <a href="#sec-17">17. Carbon Intensity</a>
+    <a href="#sec-18">18. Uncertainty &amp; Stats</a>
+    <a href="#sec-19">19. Pareto Frontier</a>
+    <a href="#sec-20">20. Carbon Budget</a>
+    <a href="#sec-21">21. Recommendation</a>
+    <a href="#sec-22">22. Carbon Passport</a>
+    <a href="#sec-23">23. Threats to Validity</a>
+    <a href="#sec-24">24. Known Limitations</a>
+  </nav>
+
+  <div class="section" id="sec-1"><h2>1. Executive Summary</h2>
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-label">Recommended Model</div>
+            <div class="kpi-value">decision_tree</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Primary Quality Score <span class="badge badge-measured">MEASURED</span></div>
+            <div class="kpi-value">1</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Total Energy (kWh) <span class="badge badge-estimated">ESTIMATED</span></div>
+            <div class="kpi-value">0.0008812</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Total CO2e (kg) <span class="badge badge-calculated">CALCULATED</span></div>
+            <div class="kpi-value">0.0006168</div>
+          </div>
+        </div>
+        <p>Recommended model: decision_tree. Total leakage warnings detected: 3 (2 critical).</p>
+        </div>
+<div class="section" id="sec-2"><h2>2. Dataset Fingerprint</h2><table><tbody><tr><td><strong>Source Path</strong></td><td>D:\MYSELF\GRP\Carbon-Emission\datasets\child_health_westbengal_1000.csv</td></tr><tr><td><strong>Format</strong></td><td>N/A</td></tr><tr><td><strong>SHA-256 Hash</strong></td><td>c68a778e13cc257f80f9edb8c44ea2b42eb9c30fcbbcbb9cce3d4c4bbb1d7ca8 <span class="badge badge-measured">MEASURED</span></td></tr><tr><td><strong>MD5 Hash</strong></td><td>a71634e156e782451f97d56bdf5299d1 <span class="badge badge-measured">MEASURED</span></td></tr><tr><td><strong>Shape (rows, cols)</strong></td><td>(1000, 8) <span class="badge badge-measured">MEASURED</span></td></tr><tr><td><strong>Load Timestamp</strong></td><td>N/A</td></tr></tbody></table><h3>Schema (8 columns)</h3><table><thead><tr><th>Column</th><th>Dtype</th></tr></thead><tbody><tr><td><code>Age (months)</code></td><td>int64</td></tr><tr><td><code>Gender</code></td><td>object</td></tr><tr><td><code>Height (cm)</code></td><td>float64</td></tr><tr><td><code>Weight (kg)</code></td><td>float64</td></tr><tr><td><code>Subdivision (West Bengal)</code></td><td>object</td></tr><tr><td><code>Mother&#x27;s Education</code></td><td>object</td></tr><tr><td><code>Mid-Upper Arm Circumference (cm)</code></td><td>float64</td></tr><tr><td><code>Malnutrition Status</code></td><td>object</td></tr></tbody></table></div>
+<div class="section" id="sec-3"><h2>3. Dataset Profile</h2><table><tbody><tr><td><strong>Shape</strong></td><td>(1000, 7) <span class="badge badge-measured">MEASURED</span></td></tr><tr><td><strong>Memory (MB)</strong></td><td>0.2147 <span class="badge badge-measured">MEASURED</span></td></tr><tr><td><strong>Duplicate Rows</strong></td><td>0 <span class="badge badge-measured">MEASURED</span></td></tr><tr><td><strong>Task Type Suggestion</strong></td><td>classification <span class="badge badge-calculated">CALCULATED</span></td></tr></tbody></table><h3>Feature Types, Missing Values &amp; Outliers (3&times;IQR)</h3><table><thead><tr><th>Feature</th><th>Detected Type</th><th>Missing</th><th>Outliers</th></tr></thead><tbody><tr><td><code>Age (months)</code></td><td>numerical</td><td>0</td><td>0</td></tr><tr><td><code>Gender</code></td><td>binary</td><td>0</td><td>0</td></tr><tr><td><code>Height (cm)</code></td><td>numerical</td><td>0</td><td>0</td></tr><tr><td><code>Weight (kg)</code></td><td>numerical</td><td>0</td><td>0</td></tr><tr><td><code>Subdivision (West Bengal)</code></td><td>categorical</td><td>0</td><td>0</td></tr><tr><td><code>Mother&#x27;s Education</code></td><td>categorical</td><td>0</td><td>0</td></tr><tr><td><code>Mid-Upper Arm Circumference (cm)</code></td><td>numerical</td><td>0</td><td>0</td></tr></tbody></table><h3>Class / Target Distribution</h3><table><thead><tr><th>Class / Stat</th><th>Value</th></tr></thead><tbody><tr><td>counts</td><td>{&#x27;Normal&#x27;: 655, &#x27;Moderate&#x27;: 209, &#x27;Severe&#x27;: 136}</td></tr><tr><td>imbalance_ratio</td><td>4.8162</td></tr></tbody></table></div>
+<div class="section" id="sec-4"><h2>4. Data Integrity Verification</h2><div class="callout callout-success">Dataset integrity verified: source file hash and schema preserved without mutation.</div><table><tbody><tr><td><strong>Verification Passed</strong></td><td>Yes <span class="badge badge-measured">MEASURED</span></td></tr><tr><td><strong>Recorded SHA-256</strong></td><td>c68a778e13cc257f80f9edb8c44ea2b42eb9c30fcbbcbb9cce3d4c4bbb1d7ca8 <span class="badge badge-measured">MEASURED</span></td></tr><tr><td><strong>Expected SHA-256</strong></td><td>c68a778e13cc257f80f9edb8c44ea2b42eb9c30fcbbcbb9cce3d4c4bbb1d7ca8</td></tr><tr><td><strong>Original DataFrame Unchanged</strong></td><td>Yes <span class="badge badge-measured">MEASURED</span></td></tr></tbody></table></div>
+<div class="section" id="sec-5"><h2>5. Leakage Warnings</h2><div class="callout callout-danger">Detected 3 potential leakage signal(s). Features are never auto-deleted silently; review and configure <code>exclude_columns</code> explicitly.</div><table><thead><tr><th>Feature</th><th>Severity</th><th>Method</th><th>Evidence</th><th>Recommended Action</th></tr></thead><tbody><tr><td><code>Mid-Upper Arm Circumference (cm)</code></td><td><span class='badge sev-critical'>CRITICAL</span></td><td>single_feature_performance</td><td>Mid-Upper Arm Circumference (cm) achieves 1.0000 accuracy alone using DecisionTree(max_depth=3) (DummyClassifier baseline: 0.6550).</td><td>Verify whether &#x27;Mid-Upper Arm Circumference (cm)&#x27; is a post-outcome measurement, diagnostic criterion, or direct proxy for the target; consider adding it to exclude_columns.</td></tr><tr><td><code>Mid-Upper Arm Circumference (cm)</code></td><td><span class='badge sev-high'>HIGH</span></td><td>mutual_information_anomaly</td><td>Feature &#x27;Mid-Upper Arm Circumference (cm)&#x27; accounts for 97.8% of total mutual information across features (MI=0.8767 of total 0.8962).</td><td>Investigate why &#x27;Mid-Upper Arm Circumference (cm)&#x27; dominates all other features in mutual information; check for deterministic or leaked rules.</td></tr><tr><td><code>Mid-Upper Arm Circumference (cm)</code></td><td><span class='badge sev-critical'>CRITICAL</span></td><td>perfect_range_separation</td><td>Feature &#x27;Mid-Upper Arm Circumference (cm)&#x27; has completely non-overlapping value ranges per class (Severe: [8.4, 11.4], Moderate: [11.5, 12.4], Normal: [12.5, 19.1]).</td><td>&#x27;Mid-Upper Arm Circumference (cm)&#x27; deterministically separates target classes and is almost certainly a diagnostic rule or target proxy; exclude it unless intentionally evaluating a rule-based baseline.</td></tr></tbody></table></div>
+<div class="section" id="sec-6"><h2>6. Preprocessing Decisions</h2><table><tbody><tr><td><strong>Excluded Columns</strong></td><td>[]</td></tr><tr><td><strong>Numerical Pipeline</strong></td><td>SimpleImputer(median) + StandardScaler</td></tr><tr><td><strong>Categorical Pipeline</strong></td><td>SimpleImputer(most_frequent) + OrdinalEncoder(unknown=-1)</td></tr><tr><td><strong>Fit Scope</strong></td><td>Training folds/split only (zero test leakage)</td></tr><tr><td><strong>Output Shape</strong></td><td>N/A <span class="badge badge-measured">MEASURED</span></td></tr></tbody></table></div>
+<div class="section" id="sec-7"><h2>7. Validation Methodology</h2><table><tbody><tr><td><strong>Validation Strategy</strong></td><td>stratified_kfold</td></tr><tr><td><strong>Cross-Validation Folds</strong></td><td>5</td></tr><tr><td><strong>CV Repeats</strong></td><td>3</td></tr><tr><td><strong>Random Seed</strong></td><td>42</td></tr><tr><td><strong>Group Column</strong></td><td>N/A</td></tr><tr><td><strong>Timestamp Column</strong></td><td>N/A</td></tr><tr><td><strong>Data Isolation</strong></td><td>Holdout test split isolated from preprocessing &amp; HPO</td></tr></tbody></table></div>
+<div class="section" id="sec-8"><h2>8. Model Comparison (Mean &amp; CI)</h2><p class='muted'>Quality &amp; duration <span class="badge badge-measured">MEASURED</span> &nbsp; Energy <span class="badge badge-estimated">ESTIMATED</span> &nbsp; CO2e <span class="badge badge-calculated">CALCULATED</span></p><table><thead><tr><th>Model</th><th>Primary Score (F1 / R&sup2;)</th><th>95% Bootstrap CI</th><th>Acc / R&sup2;</th><th>Bal. Acc / RMSE</th><th>Train Time (s)</th><th>Energy (kWh)</th><th>CO2e (kg)</th></tr></thead><tbody><tr><td><strong>dummy</strong></td><td>0.2638</td><td>N/A</td><td>0.655</td><td>0.3333</td><td>0.3116</td><td>1.426e-05</td><td>9.983e-06</td></tr><tr><td><strong>logistic_regression</strong></td><td>0.9625</td><td>N/A</td><td>0.9788</td><td>0.9578</td><td>0.4181</td><td>1.56e-05</td><td>1.092e-05</td></tr><tr><td><strong>decision_tree</strong></td><td>1</td><td>N/A</td><td>1</td><td>1</td><td>0.3928</td><td>1.393e-05</td><td>9.75e-06</td></tr><tr><td><strong>random_forest</strong></td><td>1</td><td>N/A</td><td>1</td><td>1</td><td>1.36</td><td>2.791e-05</td><td>1.954e-05</td></tr><tr><td><strong>extra_trees</strong></td><td>0.9122</td><td>N/A</td><td>0.94</td><td>0.8907</td><td>0.9842</td><td>1.831e-05</td><td>1.282e-05</td></tr><tr><td><strong>lightgbm</strong></td><td>1</td><td>N/A</td><td>1</td><td>1</td><td>0.5494</td><td>1.629e-05</td><td>1.14e-05</td></tr><tr><td><strong>logistic_regression_tuned</strong></td><td>0.9758</td><td>N/A</td><td>0.9862</td><td>0.9754</td><td>0.4373</td><td>1.499e-05</td><td>1.049e-05</td></tr><tr><td><strong>decision_tree_tuned</strong></td><td>1</td><td>N/A</td><td>1</td><td>1</td><td>0.4145</td><td>1.513e-05</td><td>1.059e-05</td></tr><tr><td><strong>random_forest_tuned</strong></td><td>1</td><td>N/A</td><td>1</td><td>1</td><td>1.969</td><td>3.079e-05</td><td>2.155e-05</td></tr><tr><td><strong>extra_trees_tuned</strong></td><td>0.9175</td><td>N/A</td><td>0.9425</td><td>0.8979</td><td>1.166</td><td>2.538e-05</td><td>1.777e-05</td></tr><tr><td><strong>lightgbm_tuned</strong></td><td>1</td><td>N/A</td><td>1</td><td>1</td><td>0.4617</td><td>1.466e-05</td><td>1.026e-05</td></tr></tbody></table></div>
+<div class="section" id="sec-9"><h2>9. Confusion Matrix</h2><p class="muted">Not applicable or not recorded (e.g. regression task).</p></div>
+<div class="section" id="sec-10"><h2>10. Per-Class Recall</h2><p class="muted">Not applicable or not recorded.</p></div>
+<div class="section" id="sec-11"><h2>11. Calibration Analysis</h2><table><tbody><tr><td><strong>Brier Score (lower is better)</strong></td><td>0 <span class="badge badge-calculated">CALCULATED</span></td></tr><tr><td><strong>Log Loss (lower is better)</strong></td><td>2.22045e-16 <span class="badge badge-calculated">CALCULATED</span></td></tr><tr><td><strong>Expected Calibration Error (ECE)</strong></td><td>0 <span class="badge badge-calculated">CALCULATED</span></td></tr></tbody></table></div>
+<div class="section" id="sec-12"><h2>12. Feature Importance <span class="badge badge-calculated">CALCULATED</span></h2><table><thead><tr><th>Feature</th><th>Importance / Score</th></tr></thead><tbody><tr><td><code>Mid-Upper Arm Circumference (cm)</code></td><td>0.877</td></tr><tr><td><code>Weight (kg)</code></td><td>0.03749</td></tr><tr><td><code>Gender</code></td><td>0.03193</td></tr><tr><td><code>Height (cm)</code></td><td>0.03104</td></tr><tr><td><code>Mother&#x27;s Education</code></td><td>0.007882</td></tr><tr><td><code>Age (months)</code></td><td>0</td></tr><tr><td><code>Subdivision (West Bengal)</code></td><td>0</td></tr></tbody></table></div>
+<div class="section" id="sec-13"><h2>13. Ablation Analysis <span class="badge badge-measured">MEASURED</span></h2><table><thead><tr><th>Condition</th><th>Score</th><th>Duration (s)</th><th>Energy (kWh)</th><th>Notes</th></tr></thead><tbody><tr><td><strong>full_features_no_opt</strong></td><td>N/A</td><td>N/A</td><td>N/A</td><td>All features, default hyperparameters</td></tr><tr><td><strong>feature_selection_only</strong></td><td>N/A</td><td>N/A</td><td>N/A</td><td>MI feature selection (train only), default hyperparameters</td></tr><tr><td><strong>pca_disabled</strong></td><td>N/A</td><td>N/A</td><td>N/A</td><td>PCA disabled (original feature space), default hyperparameters</td></tr><tr><td><strong>pca_enabled</strong></td><td>N/A</td><td>N/A</td><td>N/A</td><td>PCA enabled (n_components=4, train only)</td></tr><tr><td><strong>early_stopping_disabled</strong></td><td>N/A</td><td>N/A</td><td>N/A</td><td>Full iteration/estimator budget without early stopping</td></tr><tr><td><strong>hpo_only</strong></td><td>N/A</td><td>N/A</td><td>N/A</td><td>All features, Optuna HPO (10 trials on train CV only)</td></tr><tr><td><strong>full_pipeline</strong></td><td>N/A</td><td>N/A</td><td>N/A</td><td>MI feature selection + Optuna HPO (10 trials on train CV only)</td></tr></tbody></table></div>
+<div class="section" id="sec-14"><h2>14. Training Energy by Phase</h2><table><thead><tr><th>Phase</th><th>Duration (s)</th><th>Energy (kWh)</th><th>Method</th><th>Uncertainty</th></tr></thead><tbody><tr><td><strong>ingestion</strong></td><td>0.008981 <span class="badge badge-measured">MEASURED</span></td><td>1.081e-05 <span class="badge badge-measured">MEASURED</span></td><td>codecarbon_cpu_load</td><td>&plusmn;100%</td></tr><tr><td><strong>preprocessing</strong></td><td>0.02046 <span class="badge badge-measured">MEASURED</span></td><td>1.026e-05 <span class="badge badge-measured">MEASURED</span></td><td>codecarbon_cpu_load</td><td>&plusmn;100%</td></tr><tr><td><strong>hpo_logistic_regression</strong></td><td>0.734 <span class="badge badge-measured">MEASURED</span></td><td>1.705e-05 <span class="badge badge-measured">MEASURED</span></td><td>codecarbon_cpu_load</td><td>&plusmn;100%</td></tr><tr><td><strong>hpo_decision_tree</strong></td><td>0.1141 <span class="badge badge-measured">MEASURED</span></td><td>1.162e-05 <span class="badge badge-measured">MEASURED</span></td><td>codecarbon_cpu_load</td><td>&plusmn;100%</td></tr><tr><td><strong>hpo_random_forest</strong></td><td>8.164 <span class="badge badge-measured">MEASURED</span></td><td>0.0001017 <span class="badge badge-measured">MEASURED</span></td><td>codecarbon_cpu_load</td><td>&plusmn;50%</td></tr><tr><td><strong>hpo_extra_trees</strong></td><td>3.408 <span class="badge badge-measured">MEASURED</span></td><td>4.63e-05 <span class="badge badge-measured">MEASURED</span></td><td>codecarbon_cpu_load</td><td>&plusmn;50%</td></tr><tr><td><strong>hpo_lightgbm</strong></td><td>1.441 <span class="badge badge-measured">MEASURED</span></td><td>2.395e-05 <span class="badge badge-measured">MEASURED</span></td><td>codecarbon_cpu_load</td><td>&plusmn;50%</td></tr><tr><td><strong>final_training</strong></td><td>0.002189 <span class="badge badge-measured">MEASURED</span></td><td>1.169e-05 <span class="badge badge-measured">MEASURED</span></td><td>codecarbon_cpu_load</td><td>&plusmn;100%</td></tr></tbody></table></div>
+<div class="section" id="sec-15"><h2>15. Inference Energy</h2><div class="callout callout-warn">Inference energy measurements at this scale (&lt; 10 ms per batch) are dominated by OS and measurement overhead. Report values carry ±100% uncertainty and should NOT be treated as precise environmental measurements.</div><table><tbody><tr><td><strong>Energy per prediction (J)</strong></td><td>0.0346478 <span class="badge badge-estimated">ESTIMATED</span></td></tr><tr><td><strong>Energy per 1k predictions (kWh)</strong></td><td>N/A <span class="badge badge-estimated">ESTIMATED</span></td></tr><tr><td><strong>CO2e per 1k predictions (kg)</strong></td><td>6.73708e-06 <span class="badge badge-calculated">CALCULATED</span></td></tr><tr><td><strong>Mean batch duration (s)</strong></td><td>0.000435067 <span class="badge badge-measured">MEASURED</span></td></tr><tr><td><strong>Uncertainty (%)</strong></td><td>100 <span class="badge badge-estimated">ESTIMATED</span></td></tr><tr><td><strong>Method</strong></td><td>codecarbon_cpu_load</td></tr></tbody></table></div>
+<div class="section" id="sec-16"><h2>16. CO2e Estimates with Uncertainty</h2><table><tbody><tr><td><strong>Total Compute Energy (kWh)</strong></td><td>0.000881183 <span class="badge badge-estimated">ESTIMATED</span></td></tr><tr><td><strong>Total Estimated CO2e (kg)</strong></td><td>0.000616828 <span class="badge badge-calculated">CALCULATED</span></td></tr><tr><td><strong>Reported Uncertainty</strong></td><td>±50.0% <span class="badge badge-estimated">ESTIMATED</span></td></tr><tr><td><strong>Measurement Boundary</strong></td><td>Direct CPU/RAM active compute only (excludes PUE, network, embodied carbon)</td></tr></tbody></table></div>
+<div class="section" id="sec-17"><h2>17. Carbon Intensity Assumption</h2><div class="callout callout-info">Carbon intensity assumed: 0.7 kg CO2e/kWh (source: user_configured). This is a static grid-average assumption, not a real-time marginal intensity measurement. Embodied hardware emissions, cooling PUE, network, and storage are excluded.</div></div>
+<div class="section" id="sec-18"><h2>18. Measurement Uncertainty &amp; Statistical Analysis</h2><p class="muted">No pairwise statistical comparison tests recorded (requires &ge; 5 repeated samples per model for Wilcoxon signed-rank test).</p></div>
+<div class="section" id="sec-19"><h2>19. Pareto Frontier <span class="badge badge-calculated">CALCULATED</span></h2><p>Non-dominated models balancing predictive quality (maximised) and energy consumption (minimised): <code>decision_tree</code></p></div>
+<div class="section" id="sec-20"><h2>20. Carbon Budget Results</h2><p class="muted">No hard carbon budget was configured for this run.</p></div>
+<div class="section" id="sec-21"><h2>21. Model Recommendation</h2><table><tbody><tr><td><strong>Recommended Model</strong></td><td>decision_tree <span class="badge badge-calculated">CALCULATED</span></td></tr><tr><td><strong>Justification</strong></td><td>&#x27;decision_tree&#x27; achieves the best normalised balance of macro_f1 (1.0000) and training_energy_kwh (0.000014 kWh) among Pareto-optimal models that pass the quality gate (minimum macro_f1 = 0.995).</td></tr><tr><td><strong>Quality Gate Violations</strong></td><td>[&#x27;dummy&#x27;, &#x27;logistic_regression&#x27;, &#x27;extra_trees&#x27;, &#x27;logistic_regression_tuned&#x27;, &#x27;extra_trees_tuned&#x27;] <span class="badge badge-calculated">CALCULATED</span></td></tr></tbody></table></div>
+<div class="section" id="sec-22"><h2>22. Carbon Passport</h2><table><tbody><tr><td><strong>Model ID (UUID)</strong></td><td>f9e394f1-0bcd-46d2-b978-702a2061764f</td></tr><tr><td><strong>Framework Version</strong></td><td>carbon_automl 1.0.0</td></tr><tr><td><strong>Dataset Hash</strong></td><td>c68a778e13cc257f80f9edb8c44ea2b42eb9c30fcbbcbb9cce3d4c4bbb1d7ca8 <span class="badge badge-measured">MEASURED</span></td></tr><tr><td><strong>Hardware</strong></td><td>16 CPUs, 23.69 GB RAM, Windows-10-10.0.26300-SP0 <span class="badge badge-measured">MEASURED</span></td></tr><tr><td><strong>Training Energy (kWh)</strong></td><td>1.39283e-05 <span class="badge badge-estimated">ESTIMATED</span></td></tr><tr><td><strong>Training CO2e (kg)</strong></td><td>9.74983e-06 <span class="badge badge-calculated">CALCULATED</span></td></tr><tr><td><strong>Inference Energy / 1k preds (kWh)</strong></td><td>9.6244e-06 <span class="badge badge-estimated">ESTIMATED</span></td></tr></tbody></table></div>
+<div class="section" id="sec-23"><h2>23. Threats to Validity</h2><ul><li>Internal validity: Sub-second training/inference on small datasets (~1,000 rows) falls below CodeCarbon sampling resolution; background OS noise can reach ±50–100%.</li><li>External validity: Grid carbon intensity varies regionally and temporally; static national averages do not capture marginal grid emissions.</li><li>Construct validity: Direct compute energy excludes embodied hardware emissions, data-centre PUE cooling overhead, storage, and networking.</li><li>Statistical validity: Claims of environmental superiority require n &gt;= 5 repeated runs and Bonferroni-corrected Wilcoxon signed-rank significance (p &lt; 0.05).</li></ul></div>
+<div class="section" id="sec-24"><h2>24. Known Limitations</h2><ul><li>Grid carbon intensity (0.7 kg CO2e/kWh, user_configured) is static.</li><li>Sub-second CPU energy measurements carry ±50–100% uncertainty from background noise.</li><li>Critical target leakage warning(s) were active during this run.</li></ul></div>
+
+  <footer class="report-footer">
+    Carbon-Aware AutoML Framework &mdash; Self-Contained Offline Report
+  </footer>
+</div>
+</body>
+</html>

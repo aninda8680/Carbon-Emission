@@ -1,0 +1,128 @@
+{
+  "model_id": "f9e394f1-0bcd-46d2-b978-702a2061764f",
+  "model_name": "decision_tree",
+  "framework_version": "carbon_automl 1.0.0",
+  "generated_at": "2026-11-11T19:30:47.425951+00:00",
+  "dataset_hash": "c68a778e13cc257f80f9edb8c44ea2b42eb9c30fcbbcbb9cce3d4c4bbb1d7ca8",
+  "dataset_fingerprint": {
+    "hash": "c68a778e13cc257f80f9edb8c44ea2b42eb9c30fcbbcbb9cce3d4c4bbb1d7ca8",
+    "sha256": "c68a778e13cc257f80f9edb8c44ea2b42eb9c30fcbbcbb9cce3d4c4bbb1d7ca8",
+    "md5": "a71634e156e782451f97d56bdf5299d1",
+    "source_path": "D:\\MYSELF\\GRP\\Carbon-Emission\\datasets\\child_health_westbengal_1000.csv",
+    "row_count": 1000,
+    "col_count": 8,
+    "columns": [
+      "Age (months)",
+      "Gender",
+      "Height (cm)",
+      "Weight (kg)",
+      "Subdivision (West Bengal)",
+      "Mother's Education",
+      "Mid-Upper Arm Circumference (cm)",
+      "Malnutrition Status"
+    ],
+    "schema": {
+      "Age (months)": "int64",
+      "Gender": "object",
+      "Height (cm)": "float64",
+      "Weight (kg)": "float64",
+      "Subdivision (West Bengal)": "object",
+      "Mother's Education": "object",
+      "Mid-Upper Arm Circumference (cm)": "float64",
+      "Malnutrition Status": "object"
+    },
+    "dtypes": {
+      "Age (months)": "int64",
+      "Gender": "object",
+      "Height (cm)": "float64",
+      "Weight (kg)": "float64",
+      "Subdivision (West Bengal)": "object",
+      "Mother's Education": "object",
+      "Mid-Upper Arm Circumference (cm)": "float64",
+      "Malnutrition Status": "object"
+    }
+  },
+  "feature_schema": {
+    "Age (months)": "int64",
+    "Gender": "object",
+    "Height (cm)": "float64",
+    "Weight (kg)": "float64",
+    "Subdivision (West Bengal)": "object",
+    "Mother's Education": "object",
+    "Mid-Upper Arm Circumference (cm)": "float64",
+    "Malnutrition Status": "object"
+  },
+  "training_config": {
+    "model_type": "decision_tree",
+    "hyperparameters": {}
+  },
+  "hardware": {
+    "cpu_count": 16,
+    "ram_gb": 23.69,
+    "os": "Windows-10-10.0.26300-SP0",
+    "python_version": "3.10.9",
+    "sklearn_version": "1.7.2"
+  },
+  "training_duration_seconds": 0.3927912001963705,
+  "training_energy_kwh": {
+    "value": 1.392833328074961e-05,
+    "is_estimated": true,
+    "measurement_method": "process_time_estimation"
+  },
+  "training_co2_kg_estimate": {
+    "value": 9.749833296524727e-06,
+    "carbon_intensity_used": 0.7
+  },
+  "carbon_intensity_assumption": {
+    "value_kg_per_kwh": 0.7,
+    "source": "user_configured",
+    "caveat": "This is a country-level annual average. Real-time regional values may differ significantly. For procurement decisions, use regional/real-time data (e.g., Electricity Maps API)."
+  },
+  "inference_energy_per_1k_predictions_kwh": 9.62440012724443e-06,
+  "inference_latency": {
+    "p50_ms": 0.4350666422396898,
+    "p99_ms": null
+  },
+  "predictive_metrics": {
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "weighted_f1": 1.0,
+    "balanced_accuracy": 1.0,
+    "macro_precision": 1.0,
+    "macro_recall": 1.0,
+    "per_class_recall": {
+      "0": 1.0,
+      "1": 1.0,
+      "2": 1.0
+    },
+    "confusion_matrix": [
+      [
+        42,
+        0,
+        0
+      ],
+      [
+        0,
+        131,
+        0
+      ],
+      [
+        0,
+        0,
+        27
+      ]
+    ],
+    "roc_auc_ovr": 1.0,
+    "brier_score": 0.0,
+    "log_loss": 2.220446049250313e-16,
+    "ece": 0.0,
+    "cv_mean": 1.0
+  },
+  "confidence_intervals": {},
+  "validation_methodology": "5-fold stratified_kfold on 80% train split; evaluated once on 20% holdout test split.",
+  "known_limitations": [
+    "Grid carbon intensity (0.7 kg CO2e/kWh, user_configured) is static.",
+    "Sub-second CPU energy measurements carry \u00b150\u2013100% uncertainty from background noise.",
+    "Critical target leakage warning(s) were active during this run."
+  ]
+}

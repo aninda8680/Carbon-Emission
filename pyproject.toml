@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "carbon-automl"
+version = "1.0.0"
+description = "Carbon-Efficient AutoML Framework"
+requires-python = ">=3.10"
+dependencies = [
+    "pandas>=2.0.0,<3.0.0",
+    "numpy>=1.24.0,<3.0.0",
+    "scikit-learn>=1.3.0,<2.0.0",
+    "lightgbm>=4.0.0,<5.0.0",
+    "codecarbon>=2.3.0,<4.0.0",
+    "matplotlib>=3.7.0,<4.0.0",
+    "optuna>=3.5.0,<6.0.0",
+    "fastapi>=0.160.0,<1.0.0",
+    "uvicorn>=0.24.0,<1.0.0",
+    "streamlit>=1.28.0,<2.0.0",
+    "pydantic>=2.0.0,<3.0.0",
+    "joblib>=1.3.0,<2.0.0",
+    "scipy>=1.11.0,<2.0.0",
+    "plotly>=5.18.0,<7.0.0",
+    "pyyaml>=6.0,<7.0",
+    "pyarrow>=14.0.0",
+    "psutil>=5.9.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0,<10.0.0",
+    "pytest-cov>=4.1.0,<8.0.0",
+    "httpx>=0.25.0,<1.0.0",
+]
+xgboost = [
+    "xgboost>=2.0.0",
+]
+
+[project.scripts]
+carbon-automl = "carbon_automl.main:main"
+
+[tool.setuptools]
+packages = [
+    "carbon_automl",
+    "carbon_automl.config",
+    "carbon_automl.core",
+    "carbon_automl.leakage",
+    "carbon_automl.evaluation",
+    "carbon_automl.sustainability",
+    "carbon_automl.intelligence",
+    "carbon_automl.artifacts",
+    "carbon_automl.reporting",
+    "carbon_automl.api",
+    "carbon_automl.dashboard",
+]
+py-modules = ["main"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "slow: marks tests taking longer than 10 seconds",
+]

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carbon Passport — decision_tree</title>
+<style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 20px;
+                background: #f5f7fa; color: #2c3e50; }
+        .passport { max-width: 900px; margin: 0 auto; background: #fff;
+                    border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,.1);
+                    overflow: hidden; }
+        .header { background: linear-gradient(135deg, #1a5276, #2980b9);
+                  color: #fff; padding: 30px 40px; }
+        .header h1 { margin: 0 0 8px 0; font-size: 1.8em; }
+        .header .meta { font-size: 0.85em; opacity: 0.85; }
+        .section { padding: 20px 40px; border-bottom: 1px solid #ecf0f1; }
+        .section h2 { color: #1a5276; font-size: 1.1em; margin-bottom: 12px;
+                       border-left: 4px solid #2980b9; padding-left: 10px; }
+        table { border-collapse: collapse; width: 100%; font-size: 0.9em; }
+        th { background: #2980b9; color: #fff; padding: 8px 12px; text-align: left; }
+        td { padding: 7px 12px; border-bottom: 1px solid #ecf0f1; }
+        tr:nth-child(even) td { background: #f8f9fa; }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 12px;
+                 font-size: 0.78em; font-weight: bold; }
+        .badge-est { background: #fdebd0; color: #c0392b; }
+        .badge-meas { background: #d5f5e3; color: #1e8449; }
+        .badge-calc { background: #d6eaf8; color: #1a5276; }
+        .limitation { background: #fdfefe; border-left: 3px solid #e74c3c;
+                       padding: 6px 12px; margin: 4px 0; font-size: 0.88em; }
+        .footer { text-align: center; font-size: 0.75em; color: #7f8c8d;
+                  padding: 16px; background: #f8f9fa; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 4px;
+              font-size: 0.8em; overflow-x: auto; }
+        </style>
+</head>
+<body>
+<div class="passport">
+  <div class="header">
+    <h1>🌿 Carbon Passport</h1>
+    <div class="meta">
+      Model: <strong>decision_tree</strong> &nbsp;|&nbsp;
+      ID: f9e394f1-0bcd-46d2-b978-702a2061764f &nbsp;|&nbsp;
+      Generated: 2026-11-11T19:30:47.425951+00:00 &nbsp;|&nbsp;
+      carbon_automl 1.0.0
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Dataset</h2>
+    <table>
+      <tr><td><strong>SHA-256 hash</strong></td><td>c68a778e13cc257f80f9edb8c44ea2b42eb9c30fcbbcbb9cce3d4c4bbb1d7ca8</td></tr>
+      <tr><td><strong>Rows</strong></td><td>1000</td></tr>
+      <tr><td><strong>Columns</strong></td><td>8</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Feature Schema (8 features)</h2>
+    <table>
+      <tr><th>Feature</th><th>Type</th></tr>
+      <tr><td>Age (months)</td><td>int64</td></tr>
+<tr><td>Gender</td><td>object</td></tr>
+<tr><td>Height (cm)</td><td>float64</td></tr>
+<tr><td>Weight (kg)</td><td>float64</td></tr>
+<tr><td>Subdivision (West Bengal)</td><td>object</td></tr>
+<tr><td>Mother's Education</td><td>object</td></tr>
+<tr><td>Mid-Upper Arm Circumference (cm)</td><td>float64</td></tr>
+<tr><td>Malnutrition Status</td><td>object</td></tr>
+
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Training Configuration</h2>
+    <table>
+      <tr><td><strong>Model type</strong></td><td>decision_tree</td></tr>
+    </table>
+    
+  </div>
+
+  <div class="section">
+    <h2>Hardware</h2>
+    <table>
+      <tr><td><strong>CPU cores</strong></td><td>16</td></tr>
+      <tr><td><strong>RAM (GB)</strong></td><td>23.69</td></tr>
+      <tr><td><strong>OS</strong></td><td>Windows-10-10.0.26300-SP0</td></tr>
+      <tr><td><strong>Python version</strong></td><td>3.10.9</td></tr>
+      <tr><td><strong>scikit-learn version</strong></td><td>1.7.2</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Energy &amp; Carbon</h2>
+    <table>
+      <tr><td><strong>Training duration (s)</strong></td><td>0.392791 <span class="badge badge-meas">Measured</span></td></tr>
+      <tr><td><strong>Training energy (kWh)</strong></td><td>1.39283e-05 <span class="badge badge-est">Estimated</span></td></tr>
+      <tr><td><strong>Training CO₂ estimate (kg)</strong></td><td>9.74983e-06 <span class="badge badge-calc">Calculated</span></td></tr>
+      <tr><td><strong>Carbon intensity used (kg CO₂e/kWh)</strong></td><td>0.7 <span class="badge badge-calc">Calculated</span></td></tr>
+      <tr><td><strong>Inference energy / 1k predictions (kWh)</strong></td><td>9.6244e-06 <span class="badge badge-est">Estimated</span></td></tr>
+      <tr><td><strong>Inference latency p50 (ms)</strong></td><td>0.435067 <span class="badge badge-meas">Measured</span></td></tr>
+      <tr><td><strong>Inference latency p99 (ms)</strong></td><td><em>N/A</em> <span class="badge badge-meas">Measured</span></td></tr>
+    </table>
+    <p style="font-size:0.82em; color:#7f8c8d;">
+      <strong>Carbon intensity source:</strong> user_configured<br>
+      <strong>Caveat:</strong> This is a country-level annual average. Real-time regional values may differ significantly. For procurement decisions, use regional/real-time data (e.g., Electricity Maps API).
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Predictive Performance</h2>
+    <p style="font-size:0.82em;color:#7f8c8d;">
+      Validation: 5-fold stratified_kfold on 80% train split; evaluated once on 20% holdout test split.
+    </p>
+    <table>
+      <tr><th>Metric</th><th>Value</th></tr>
+      <tr><td>accuracy</td><td>1</td></tr>
+<tr><td>macro_f1</td><td>1</td></tr>
+<tr><td>weighted_f1</td><td>1</td></tr>
+<tr><td>balanced_accuracy</td><td>1</td></tr>
+<tr><td>macro_precision</td><td>1</td></tr>
+<tr><td>macro_recall</td><td>1</td></tr>
+<tr><td>per_class_recall</td><td>{&#x27;0&#x27;: 1.0, &#x27;1&#x27;: 1.0, &#x27;2&#x27;: 1.0}</td></tr>
+<tr><td>confusion_matrix</td><td>[[42, 0, 0], [0, 131, 0], [0, 0, 27]]</td></tr>
+<tr><td>roc_auc_ovr</td><td>1</td></tr>
+<tr><td>brier_score</td><td>0</td></tr>
+<tr><td>log_loss</td><td>2.22045e-16</td></tr>
+<tr><td>ece</td><td>0</td></tr>
+<tr><td>cv_mean</td><td>1</td></tr>
+
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Known Limitations</h2>
+    <div class="limitation">⚠ Grid carbon intensity (0.7 kg CO2e/kWh, user_configured) is static.</div>
+<div class="limitation">⚠ Sub-second CPU energy measurements carry ±50–100% uncertainty from background noise.</div>
+<div class="limitation">⚠ Critical target leakage warning(s) were active during this run.</div>
+
+  </div>
+
+  <div class="footer">
+    Generated by carbon_automl 1.0.0 &nbsp;|&nbsp;
+    Model ID: f9e394f1-0bcd-46d2-b978-702a2061764f
+  </div>
+</div>
+</body>
+</html>

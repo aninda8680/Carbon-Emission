@@ -1,0 +1,62 @@
+# Carbon-Aware AutoML Framework Configuration
+# ============================================================
+# All paths are relative to the project root (where main.py lives).
+# Regenerate a default config with: python main.py validate --print-defaults
+
+# --------------- Dataset Settings ---------------
+dataset_path: "datasets/child_health_westbengal_1000.csv"   # Path to input CSV or Parquet
+target_column: "Malnutrition Status"                         # Column to predict
+task_type: "auto"                                             # auto | classification | regression
+
+# Columns to exclude from features before training.
+# NOTE: "Mid-Upper Arm Circumference (cm)" (MUAC) is a WHO diagnostic criterion
+# that deterministically predicts the target class (100% accuracy). The leakage
+# detector WILL flag it. You must decide whether to exclude it here.
+# Example:  exclude_columns: ["Mid-Upper Arm Circumference (cm)"]
+exclude_columns: []
+
+# Column used for group-based splitting (e.g., patient ID). null = disabled.
+group_column: null
+# Column with timestamps for time-series splitting. null = disabled.
+timestamp_column: null
+
+# --------------- Reproducibility ---------------
+random_seed: 42
+
+# --------------- Validation Strategy ---------------
+# Options: stratified_kfold | kfold | group_kfold | time_series
+validation_strategy: "stratified_kfold"
+n_folds: 5       # Number of CV folds
+n_repeats: 3     # Repeated CV repetitions (benchmark mode)
+
+# --------------- Hyperparameter Optimisation ---------------
+trial_budget: 30         # Total Optuna trials across all models (shared fairly)
+quality_tolerance: 0.005 # Acceptable drop from best model (0.5 percentage points)
+
+# --------------- Carbon / Energy Settings ---------------
+# India national average grid carbon intensity (kgCO₂/kWh).
+# Source: CEA Annual Report 2022-23 ≈ 0.70 kg CO₂/kWh.
+# Override with your regional value from https://www.electricitymap.org/
+carbon_intensity_kg_per_kwh: 0.7
+carbon_intensity_source: "user_configured"  # user_configured | electricitymap | watttime
+
+# Hard budget (kg CO₂). null = no limit.
+# If set, models whose training+amortised inference cost exceeds this are excluded.
+carbon_budget_kg: null
+
+# --------------- Output Directories ---------------
+output_dir: "experiments"   # Experiment JSON results land here
+models_dir: "models"        # Serialised model artefacts land here
+
+# --------------- Model Zoo ---------------
+enable_xgboost: false   # XGBoost is optional; set true if xgboost is installed
+
+# --------------- Measurement Settings ---------------
+# Number of repeated energy measurements averaged per phase.
+measurement_repetitions: 3
+
+# --------------- Leakage Detection Thresholds ---------------
+# Single-feature predictive accuracy above this → critical leakage warning.
+leakage_single_feature_threshold: 0.95
+# Pearson/Spearman correlation with target above this → high leakage warning.
+leakage_correlation_threshold: 0.95

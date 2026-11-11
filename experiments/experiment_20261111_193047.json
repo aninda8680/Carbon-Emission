@@ -1,0 +1,5286 @@
+{
+  "timestamp": "2026-11-11T19:29:41.035202+00:00",
+  "benchmark_mode": false,
+  "reused_cached_model": false,
+  "config": {
+    "dataset_path": "datasets/child_health_westbengal_1000.csv",
+    "target_column": "Malnutrition Status",
+    "task_type": "auto",
+    "exclude_columns": [],
+    "group_column": null,
+    "timestamp_column": null,
+    "random_seed": 42,
+    "validation_strategy": "stratified_kfold",
+    "n_folds": 5,
+    "n_repeats": 3,
+    "trial_budget": 30,
+    "quality_tolerance": 0.005,
+    "carbon_intensity_kg_per_kwh": 0.7,
+    "carbon_intensity_source": "user_configured",
+    "carbon_budget_kg": null,
+    "output_dir": "experiments",
+    "models_dir": "models",
+    "enable_xgboost": false,
+    "measurement_repetitions": 3,
+    "leakage_single_feature_threshold": 0.95,
+    "leakage_correlation_threshold": 0.95
+  },
+  "phases": {
+    "ingestion": {
+      "phase_name": "ingestion",
+      "duration_seconds": 0.008980800164863467,
+      "energy_kwh": 1.0813445975738593e-05,
+      "energy_joules": 38.928405512658934,
+      "co2_kg": 7.569412183017014e-06,
+      "measurement_method": "codecarbon_cpu_load",
+      "is_estimated": false,
+      "uncertainty_pct": 100.0
+    },
+    "preprocessing": {
+      "phase_name": "preprocessing",
+      "duration_seconds": 0.02046110015362501,
+      "energy_kwh": 1.026217208103387e-05,
+      "energy_joules": 36.94381949172193,
+      "co2_kg": 7.183520456723709e-06,
+      "measurement_method": "codecarbon_cpu_load",
+      "is_estimated": false,
+      "uncertainty_pct": 100.0
+    },
+    "hpo_logistic_regression": {
+      "phase_name": "hpo_logistic_regression",
+      "duration_seconds": 0.7339982998091727,
+      "energy_kwh": 1.7050331489300644e-05,
+      "energy_joules": 61.38119336148232,
+      "co2_kg": 1.193523204251045e-05,
+      "measurement_method": "codecarbon_cpu_load",
+      "is_estimated": false,
+      "uncertainty_pct": 100.0
+    },
+    "hpo_decision_tree": {
+      "phase_name": "hpo_decision_tree",
+      "duration_seconds": 0.1141152000054717,
+      "energy_kwh": 1.1621714785678254e-05,
+      "energy_joules": 41.83817322844171,
+      "co2_kg": 8.135200349974777e-06,
+      "measurement_method": "codecarbon_cpu_load",
+      "is_estimated": false,
+      "uncertainty_pct": 100.0
+    },
+    "hpo_random_forest": {
+      "phase_name": "hpo_random_forest",
+      "duration_seconds": 8.164004700025544,
+      "energy_kwh": 0.00010165587134370371,
+      "energy_joules": 365.96113683733336,
+      "co2_kg": 7.115910994059259e-05,
+      "measurement_method": "codecarbon_cpu_load",
+      "is_estimated": false,
+      "uncertainty_pct": 50.0
+    },
+    "hpo_extra_trees": {
+      "phase_name": "hpo_extra_trees",
+      "duration_seconds": 3.408215400064364,
+      "energy_kwh": 4.6297160222531634e-05,
+      "energy_joules": 166.66977680111387,
+      "co2_kg": 3.240801215577214e-05,
+      "measurement_method": "codecarbon_cpu_load",
+      "is_estimated": false,
+      "uncertainty_pct": 50.0
+    },
+    "hpo_lightgbm": {
+      "phase_name": "hpo_lightgbm",
+      "duration_seconds": 1.4409410001244396,
+      "energy_kwh": 2.394985987057204e-05,
+      "energy_joules": 86.21949553405935,
+      "co2_kg": 1.6764901909400426e-05,
+      "measurement_method": "codecarbon_cpu_load",
+      "is_estimated": false,
+      "uncertainty_pct": 50.0
+    },
+    "final_training": {
+      "phase_name": "final_training",
+      "duration_seconds": 0.0021885999012738466,
+      "energy_kwh": 1.1692525952551743e-05,
+      "energy_joules": 42.093093429186276,
+      "co2_kg": 8.18476816678622e-06,
+      "measurement_method": "codecarbon_cpu_load",
+      "is_estimated": false,
+      "uncertainty_pct": 100.0
+    }
+  },
+  "metadata": {
+    "source_path": "D:\\MYSELF\\GRP\\Carbon-Emission\\datasets\\child_health_westbengal_1000.csv",
+    "format": "csv",
+    "shape": [
+      1000,
+      8
+    ],
+    "feature_shape": [
+      1000,
+      7
+    ],
+    "dtypes": {
+      "Age (months)": "int64",
+      "Gender": "object",
+      "Height (cm)": "float64",
+      "Weight (kg)": "float64",
+      "Subdivision (West Bengal)": "object",
+      "Mother's Education": "object",
+      "Mid-Upper Arm Circumference (cm)": "float64",
+      "Malnutrition Status": "object"
+    },
+    "file_hash": "c68a778e13cc257f80f9edb8c44ea2b42eb9c30fcbbcbb9cce3d4c4bbb1d7ca8",
+    "file_hash_algorithm": "sha256",
+    "load_timestamp": "2026-11-11T19:29:48.458906+00:00",
+    "target_column": "Malnutrition Status",
+    "exclude_columns": [],
+    "integrity_fingerprint": {
+      "hash": "c68a778e13cc257f80f9edb8c44ea2b42eb9c30fcbbcbb9cce3d4c4bbb1d7ca8",
+      "sha256": "c68a778e13cc257f80f9edb8c44ea2b42eb9c30fcbbcbb9cce3d4c4bbb1d7ca8",
+      "md5": "a71634e156e782451f97d56bdf5299d1",
+      "source_path": "D:\\MYSELF\\GRP\\Carbon-Emission\\datasets\\child_health_westbengal_1000.csv",
+      "row_count": 1000,
+      "col_count": 8,
+      "columns": [
+        "Age (months)",
+        "Gender",
+        "Height (cm)",
+        "Weight (kg)",
+        "Subdivision (West Bengal)",
+        "Mother's Education",
+        "Mid-Upper Arm Circumference (cm)",
+        "Malnutrition Status"
+      ],
+      "schema": {
+        "Age (months)": "int64",
+        "Gender": "object",
+        "Height (cm)": "float64",
+        "Weight (kg)": "float64",
+        "Subdivision (West Bengal)": "object",
+        "Mother's Education": "object",
+        "Mid-Upper Arm Circumference (cm)": "float64",
+        "Malnutrition Status": "object"
+      },
+      "dtypes": {
+        "Age (months)": "int64",
+        "Gender": "object",
+        "Height (cm)": "float64",
+        "Weight (kg)": "float64",
+        "Subdivision (West Bengal)": "object",
+        "Mother's Education": "object",
+        "Mid-Upper Arm Circumference (cm)": "float64",
+        "Malnutrition Status": "object"
+      }
+    }
+  },
+  "dataset_fingerprint": {
+    "hash": "c68a778e13cc257f80f9edb8c44ea2b42eb9c30fcbbcbb9cce3d4c4bbb1d7ca8",
+    "sha256": "c68a778e13cc257f80f9edb8c44ea2b42eb9c30fcbbcbb9cce3d4c4bbb1d7ca8",
+    "md5": "a71634e156e782451f97d56bdf5299d1",
+    "source_path": "D:\\MYSELF\\GRP\\Carbon-Emission\\datasets\\child_health_westbengal_1000.csv",
+    "row_count": 1000,
+    "col_count": 8,
+    "columns": [
+      "Age (months)",
+      "Gender",
+      "Height (cm)",
+      "Weight (kg)",
+      "Subdivision (West Bengal)",
+      "Mother's Education",
+      "Mid-Upper Arm Circumference (cm)",
+      "Malnutrition Status"
+    ],
+    "schema": {
+      "Age (months)": "int64",
+      "Gender": "object",
+      "Height (cm)": "float64",
+      "Weight (kg)": "float64",
+      "Subdivision (West Bengal)": "object",
+      "Mother's Education": "object",
+      "Mid-Upper Arm Circumference (cm)": "float64",
+      "Malnutrition Status": "object"
+    },
+    "dtypes": {
+      "Age (months)": "int64",
+      "Gender": "object",
+      "Height (cm)": "float64",
+      "Weight (kg)": "float64",
+      "Subdivision (West Bengal)": "object",
+      "Mother's Education": "object",
+      "Mid-Upper Arm Circumference (cm)": "float64",
+      "Malnutrition Status": "object"
+    }
+  },
+  "profile": {
+    "shape": [
+      1000,
+      7
+    ],
+    "memory_mb": 0.2147,
+    "feature_types": {
+      "Age (months)": "numerical",
+      "Gender": "binary",
+      "Height (cm)": "numerical",
+      "Weight (kg)": "numerical",
+      "Subdivision (West Bengal)": "categorical",
+      "Mother's Education": "categorical",
+      "Mid-Upper Arm Circumference (cm)": "numerical"
+    },
+    "missing_values": {
+      "Age (months)": 0,
+      "Gender": 0,
+      "Height (cm)": 0,
+      "Weight (kg)": 0,
+      "Subdivision (West Bengal)": 0,
+      "Mother's Education": 0,
+      "Mid-Upper Arm Circumference (cm)": 0
+    },
+    "duplicate_rows": 0,
+    "class_distribution": {
+      "counts": {
+        "Normal": 655,
+        "Moderate": 209,
+        "Severe": 136
+      },
+      "imbalance_ratio": 4.8162
+    },
+    "target_distribution": {
+      "n_valid": 1000,
+      "n_missing": 0,
+      "n_unique": 3,
+      "value_counts": {
+        "Normal": 655,
+        "Moderate": 209,
+        "Severe": 136
+      }
+    },
+    "outliers": {
+      "Age (months)": 0,
+      "Height (cm)": 0,
+      "Weight (kg)": 0,
+      "Mid-Upper Arm Circumference (cm)": 0
+    },
+    "numerical_stats": {
+      "Age (months)": {
+        "min": 6.0,
+        "max": 60.0,
+        "mean": 33.443,
+        "std": 15.909993050874625
+      },
+      "Height (cm)": {
+        "min": 55.2,
+        "max": 119.7,
+        "mean": 90.0419,
+        "std": 9.68677283505492
+      },
+      "Weight (kg)": {
+        "min": 4.0,
+        "max": 21.2,
+        "mean": 11.9472,
+        "std": 2.958378637727795
+      },
+      "Mid-Upper Arm Circumference (cm)": {
+        "min": 8.4,
+        "max": 19.1,
+        "mean": 13.0255,
+        "std": 1.4721708586427857
+      }
+    },
+    "task_type_suggestion": "classification",
+    "recommendations": []
+  },
+  "task_type": "classification",
+  "size_aware_strategy": {
+    "complexity_profile": {
+      "n_rows": 1000,
+      "n_features": 7,
+      "n_cells": 7000,
+      "memory_mb": 0.2147,
+      "dimensionality_ratio": 0.007,
+      "is_wide_dataset": false,
+      "dtype_breakdown": {
+        "float64": 3,
+        "float32": 0,
+        "int": 1,
+        "object_or_category": 3,
+        "other": 0
+      },
+      "float64_heavy": false,
+      "max_cardinality": 10,
+      "high_cardinality_count": 0,
+      "n_classes": 3,
+      "task_type": "classification",
+      "complexity_score": 0.2072,
+      "tier": "light"
+    },
+    "selected_models": [
+      "dummy",
+      "logistic_regression",
+      "decision_tree",
+      "random_forest",
+      "extra_trees",
+      "lightgbm"
+    ],
+    "model_zoo": {
+      "dummy": "DummyClassifier(strategy='most_frequent')",
+      "logistic_regression": "LogisticRegression(max_iter=1000, random_state=42)",
+      "decision_tree": "DecisionTreeClassifier(random_state=42)",
+      "random_forest": "RandomForestClassifier(n_jobs=1, random_state=42)",
+      "extra_trees": "ExtraTreesClassifier(n_jobs=1, random_state=42)",
+      "lightgbm": "LGBMClassifier(n_jobs=1, random_state=42, verbose=-1)"
+    },
+    "tuning_strategy": {
+      "mode": "full_optuna_cv",
+      "suggested_trials": 30,
+      "cv_folds": 5,
+      "use_pruning": true,
+      "subsample_for_hpo": false,
+      "subsample_fraction": 1.0,
+      "early_stopping_recommended": false
+    },
+    "memory_strategy": {
+      "use_chunking": false,
+      "chunk_size": null,
+      "safe_downcast_recommended": false,
+      "estimated_downcast_savings_mb": 0.0,
+      "estimated_peak_memory_mb": 0.537
+    },
+    "rationale": [
+      "Tier 'light' (1000x7, 0.21 MB): all candidate models and full 5-fold Optuna HPO enabled."
+    ]
+  },
+  "leakage_warnings": [
+    {
+      "feature": "Mid-Upper Arm Circumference (cm)",
+      "detection_method": "single_feature_performance",
+      "evidence": "Mid-Upper Arm Circumference (cm) achieves 1.0000 accuracy alone using DecisionTree(max_depth=3) (DummyClassifier baseline: 0.6550).",
+      "severity": "critical",
+      "recommended_investigation": "Verify whether 'Mid-Upper Arm Circumference (cm)' is a post-outcome measurement, diagnostic criterion, or direct proxy for the target; consider adding it to exclude_columns."
+    },
+    {
+      "feature": "Mid-Upper Arm Circumference (cm)",
+      "detection_method": "mutual_information_anomaly",
+      "evidence": "Feature 'Mid-Upper Arm Circumference (cm)' accounts for 97.8% of total mutual information across features (MI=0.8767 of total 0.8962).",
+      "severity": "high",
+      "recommended_investigation": "Investigate why 'Mid-Upper Arm Circumference (cm)' dominates all other features in mutual information; check for deterministic or leaked rules."
+    },
+    {
+      "feature": "Mid-Upper Arm Circumference (cm)",
+      "detection_method": "perfect_range_separation",
+      "evidence": "Feature 'Mid-Upper Arm Circumference (cm)' has completely non-overlapping value ranges per class (Severe: [8.4, 11.4], Moderate: [11.5, 12.4], Normal: [12.5, 19.1]).",
+      "severity": "critical",
+      "recommended_investigation": "'Mid-Upper Arm Circumference (cm)' deterministically separates target classes and is almost certainly a diagnostic rule or target proxy; exclude it unless intentionally evaluating a rule-based baseline."
+    }
+  ],
+  "experiment_hash": "c8ea14869ec1a9097b1cdd28b2259d7e2507e19fcd448085a467484774af0f9c",
+  "preprocessing": {
+    "feature_names_in": [
+      "Age (months)",
+      "Gender",
+      "Height (cm)",
+      "Weight (kg)",
+      "Subdivision (West Bengal)",
+      "Mother's Education",
+      "Mid-Upper Arm Circumference (cm)"
+    ],
+    "feature_names_out": [
+      "Age (months)",
+      "Height (cm)",
+      "Weight (kg)",
+      "Mid-Upper Arm Circumference (cm)",
+      "Gender",
+      "Subdivision (West Bengal)",
+      "Mother's Education"
+    ],
+    "train_shape": [
+      800,
+      7
+    ],
+    "test_shape": [
+      200,
+      7
+    ]
+  },
+  "models": [
+    {
+      "name": "dummy",
+      "model_name": "dummy",
+      "accuracy": 0.655,
+      "macro_f1": 0.2638460072422336,
+      "weighted_f1": 0.518461978273299,
+      "balanced_accuracy": 0.3333333333333333,
+      "macro_precision": 0.21833333333333335,
+      "macro_recall": 0.3333333333333333,
+      "roc_auc_ovr": 0.5,
+      "brier_score": 0.6900000000000001,
+      "log_loss": 12.435060419245417,
+      "ece": 0.34500000000000003,
+      "mean_score": 0.2638460072422336,
+      "std_score": 0.0006098723079855262,
+      "confidence_intervals": {
+        "accuracy": {
+          "mean": 0.655,
+          "std": 0.002499999999999991,
+          "ci_lower": 0.6525,
+          "ci_upper": 0.65625,
+          "n_samples": 5
+        },
+        "macro_f1": {
+          "mean": 0.2638460072422336,
+          "std": 0.0006098723079855262,
+          "ci_lower": 0.26323613493424813,
+          "ci_upper": 0.2641509433962264,
+          "n_samples": 5
+        },
+        "weighted_f1": {
+          "mean": 0.518461978273299,
+          "std": 0.003170383076043448,
+          "ci_lower": 0.5152915951972555,
+          "ci_upper": 0.5200471698113207,
+          "n_samples": 5
+        },
+        "balanced_accuracy": {
+          "mean": 0.3333333333333333,
+          "std": 0.0,
+          "ci_lower": 0.3333333333333333,
+          "ci_upper": 0.3333333333333333,
+          "n_samples": 5
+        },
+        "macro_precision": {
+          "mean": 0.21833333333333335,
+          "std": 0.0008333333333333304,
+          "ci_lower": 0.21749999999999997,
+          "ci_upper": 0.21875,
+          "n_samples": 5
+        },
+        "macro_recall": {
+          "mean": 0.3333333333333333,
+          "std": 0.0,
+          "ci_lower": 0.3333333333333333,
+          "ci_upper": 0.3333333333333333,
+          "n_samples": 5
+        },
+        "roc_auc_ovr": {
+          "mean": 0.5,
+          "std": 0.0,
+          "ci_lower": 0.5,
+          "ci_upper": 0.5,
+          "n_samples": 5
+        },
+        "brier_score": {
+          "mean": 0.6900000000000001,
+          "std": 0.004999999999999982,
+          "ci_lower": 0.6875,
+          "ci_upper": 0.695,
+          "n_samples": 5
+        },
+        "log_loss": {
+          "mean": 12.435060419245417,
+          "std": 0.09010913347279334,
+          "ci_lower": 12.39000585250902,
+          "ci_upper": 12.52516955271821,
+          "n_samples": 5
+        },
+        "ece": {
+          "mean": 0.34500000000000003,
+          "std": 0.002499999999999991,
+          "ci_lower": 0.34375,
+          "ci_upper": 0.3475,
+          "n_samples": 5
+        }
+      },
+      "training_duration_seconds": 0.3116087999660522,
+      "training_energy_kwh": 1.4261832792749374e-05,
+      "training_energy_joules": 51.342598053897746,
+      "training_co2_kg": 9.98328295492456e-06,
+      "inference_energy_kwh": 0.0,
+      "memory_mb": 0.0,
+      "energy_measurements_kwh": [
+        1.4261832792749374e-05
+      ],
+      "source": "cv_baseline"
+    },
+    {
+      "name": "logistic_regression",
+      "model_name": "logistic_regression",
+      "accuracy": 0.97875,
+      "macro_f1": 0.9625407282909892,
+      "weighted_f1": 0.9785647701368421,
+      "balanced_accuracy": 0.957781173075291,
+      "macro_precision": 0.9689562289562289,
+      "macro_recall": 0.957781173075291,
+      "roc_auc_ovr": 0.9984487459726106,
+      "brier_score": 0.07396913032071777,
+      "log_loss": 0.1457299269422026,
+      "ece": 0.09493478150500631,
+      "mean_score": 0.9625407282909892,
+      "std_score": 0.009805369130518977,
+      "confidence_intervals": {
+        "accuracy": {
+          "mean": 0.97875,
+          "std": 0.007500000000000025,
+          "ci_lower": 0.9724999999999999,
+          "ci_upper": 0.985,
+          "n_samples": 5
+        },
+        "macro_f1": {
+          "mean": 0.9625407282909892,
+          "std": 0.009805369130518977,
+          "ci_lower": 0.9544597935160051,
+          "ci_upper": 0.970706545503797,
+          "n_samples": 5
+        },
+        "weighted_f1": {
+          "mean": 0.9785647701368421,
+          "std": 0.007659355835088029,
+          "ci_lower": 0.9721523520474775,
+          "ci_upper": 0.984999947329848,
+          "n_samples": 5
+        },
+        "balanced_accuracy": {
+          "mean": 0.957781173075291,
+          "std": 0.0125221469938804,
+          "ci_lower": 0.9467294796706562,
+          "ci_upper": 0.9698429674900263,
+          "n_samples": 5
+        },
+        "macro_precision": {
+          "mean": 0.9689562289562289,
+          "std": 0.008684308833163753,
+          "ci_lower": 0.961178451178451,
+          "ci_upper": 0.9764368686868687,
+          "n_samples": 5
+        },
+        "macro_recall": {
+          "mean": 0.957781173075291,
+          "std": 0.0125221469938804,
+          "ci_lower": 0.9467294796706562,
+          "ci_upper": 0.9698429674900263,
+          "n_samples": 5
+        },
+        "roc_auc_ovr": {
+          "mean": 0.9984487459726106,
+          "std": 0.0011969290400090096,
+          "ci_lower": 0.9972929850137604,
+          "ci_upper": 0.9993020704427756,
+          "n_samples": 5
+        },
+        "brier_score": {
+          "mean": 0.07396913032071777,
+          "std": 0.008704438973719896,
+          "ci_lower": 0.06699726843141336,
+          "ci_upper": 0.0806864222179497,
+          "n_samples": 5
+        },
+        "log_loss": {
+          "mean": 0.1457299269422026,
+          "std": 0.013619507950078762,
+          "ci_lower": 0.13415110234704844,
+          "ci_upper": 0.15866978784737357,
+          "n_samples": 5
+        },
+        "ece": {
+          "mean": 0.09493478150500631,
+          "std": 0.018129061395806934,
+          "ci_lower": 0.07990700031870604,
+          "ci_upper": 0.11287791431728865,
+          "n_samples": 5
+        }
+      },
+      "training_duration_seconds": 0.41808339999988675,
+      "training_energy_kwh": 1.5599177400086758e-05,
+      "training_energy_joules": 56.15703864031233,
+      "training_co2_kg": 1.091942418006073e-05,
+      "inference_energy_kwh": 0.0,
+      "memory_mb": 0.0,
+      "energy_measurements_kwh": [
+        1.5599177400086758e-05
+      ],
+      "source": "cv_baseline"
+    },
+    {
+      "name": "decision_tree",
+      "model_name": "decision_tree",
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "weighted_f1": 1.0,
+      "balanced_accuracy": 1.0,
+      "macro_precision": 1.0,
+      "macro_recall": 1.0,
+      "roc_auc_ovr": 1.0,
+      "brier_score": 0.0,
+      "log_loss": 2.220446049250313e-16,
+      "ece": 0.0,
+      "mean_score": 1.0,
+      "std_score": 0.0,
+      "confidence_intervals": {
+        "accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_f1": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "weighted_f1": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "balanced_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_precision": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_recall": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "roc_auc_ovr": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "brier_score": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_lower": 0.0,
+          "ci_upper": 0.0,
+          "n_samples": 5
+        },
+        "log_loss": {
+          "mean": 2.220446049250313e-16,
+          "std": 0.0,
+          "ci_lower": 2.220446049250313e-16,
+          "ci_upper": 2.220446049250313e-16,
+          "n_samples": 5
+        },
+        "ece": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_lower": 0.0,
+          "ci_upper": 0.0,
+          "n_samples": 5
+        }
+      },
+      "training_duration_seconds": 0.3927912001963705,
+      "training_energy_kwh": 1.392833328074961e-05,
+      "training_energy_joules": 50.14199981069859,
+      "training_co2_kg": 9.749833296524727e-06,
+      "inference_energy_kwh": 0.0,
+      "memory_mb": 0.0,
+      "energy_measurements_kwh": [
+        1.392833328074961e-05
+      ],
+      "source": "cv_baseline"
+    },
+    {
+      "name": "random_forest",
+      "model_name": "random_forest",
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "weighted_f1": 1.0,
+      "balanced_accuracy": 1.0,
+      "macro_precision": 1.0,
+      "macro_recall": 1.0,
+      "roc_auc_ovr": 1.0,
+      "brier_score": 0.02265975,
+      "log_loss": 0.08953974330250064,
+      "ece": 0.08134999999999995,
+      "mean_score": 1.0,
+      "std_score": 0.0,
+      "confidence_intervals": {
+        "accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_f1": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "weighted_f1": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "balanced_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_precision": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_recall": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "roc_auc_ovr": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "brier_score": {
+          "mean": 0.02265975,
+          "std": 0.0036005609285221095,
+          "ci_lower": 0.0199465,
+          "ci_upper": 0.02631225,
+          "n_samples": 5
+        },
+        "log_loss": {
+          "mean": 0.08953974330250064,
+          "std": 0.007353503831183363,
+          "ci_lower": 0.08315542074594579,
+          "ci_upper": 0.09633888483954771,
+          "n_samples": 5
+        },
+        "ece": {
+          "mean": 0.08134999999999995,
+          "std": 0.006011395428683792,
+          "ci_lower": 0.07608749999999995,
+          "ci_upper": 0.08661250000000001,
+          "n_samples": 5
+        }
+      },
+      "training_duration_seconds": 1.3595769999083132,
+      "training_energy_kwh": 2.7911415229437176e-05,
+      "training_energy_joules": 100.48109482597383,
+      "training_co2_kg": 1.953799066060602e-05,
+      "inference_energy_kwh": 0.0,
+      "memory_mb": 0.0,
+      "energy_measurements_kwh": [
+        2.7911415229437176e-05
+      ],
+      "source": "cv_baseline"
+    },
+    {
+      "name": "extra_trees",
+      "model_name": "extra_trees",
+      "accuracy": 0.9400000000000001,
+      "macro_f1": 0.9122020228263089,
+      "weighted_f1": 0.9381687078299301,
+      "balanced_accuracy": 0.8906731177319414,
+      "macro_precision": 0.9391997223910517,
+      "macro_recall": 0.8906731177319414,
+      "roc_auc_ovr": 0.9943536820705626,
+      "brier_score": 0.14661400000000002,
+      "log_loss": 0.3024419464174989,
+      "ece": 0.16797500000000004,
+      "mean_score": 0.9122020228263089,
+      "std_score": 0.024019595022179138,
+      "confidence_intervals": {
+        "accuracy": {
+          "mean": 0.9400000000000001,
+          "std": 0.015103807466993205,
+          "ci_lower": 0.9299999999999999,
+          "ci_upper": 0.9550000000000001,
+          "n_samples": 5
+        },
+        "macro_f1": {
+          "mean": 0.9122020228263089,
+          "std": 0.024019595022179138,
+          "ci_lower": 0.8961035478884586,
+          "ci_upper": 0.9351876160360181,
+          "n_samples": 5
+        },
+        "weighted_f1": {
+          "mean": 0.9381687078299301,
+          "std": 0.015547338992944686,
+          "ci_lower": 0.9278150892839129,
+          "ci_upper": 0.9536272843848259,
+          "n_samples": 5
+        },
+        "balanced_accuracy": {
+          "mean": 0.8906731177319414,
+          "std": 0.029960364979504803,
+          "ci_lower": 0.8718988201341142,
+          "ci_upper": 0.9202020202020202,
+          "n_samples": 5
+        },
+        "macro_precision": {
+          "mean": 0.9391997223910517,
+          "std": 0.018201417592207378,
+          "ci_lower": 0.9261930211022771,
+          "ci_upper": 0.9563024883379098,
+          "n_samples": 5
+        },
+        "macro_recall": {
+          "mean": 0.8906731177319414,
+          "std": 0.029960364979504803,
+          "ci_lower": 0.8718988201341142,
+          "ci_upper": 0.9202020202020202,
+          "n_samples": 5
+        },
+        "roc_auc_ovr": {
+          "mean": 0.9943536820705626,
+          "std": 0.002084895990176036,
+          "ci_lower": 0.9922406310620486,
+          "ci_upper": 0.9958643290568296,
+          "n_samples": 5
+        },
+        "brier_score": {
+          "mean": 0.14661400000000002,
+          "std": 0.00957071922584714,
+          "ci_lower": 0.13936475,
+          "ci_upper": 0.1557055,
+          "n_samples": 5
+        },
+        "log_loss": {
+          "mean": 0.3024419464174989,
+          "std": 0.01581899551001626,
+          "ci_lower": 0.28925073395184203,
+          "ci_upper": 0.3185084463073828,
+          "n_samples": 5
+        },
+        "ece": {
+          "mean": 0.16797500000000004,
+          "std": 0.015617528213516982,
+          "ci_lower": 0.15553750000000005,
+          "ci_upper": 0.1821875,
+          "n_samples": 5
+        }
+      },
+      "training_duration_seconds": 0.9841739998664707,
+      "training_energy_kwh": 1.831028158690575e-05,
+      "training_energy_joules": 65.9170137128607,
+      "training_co2_kg": 1.2817197110834024e-05,
+      "inference_energy_kwh": 0.0,
+      "memory_mb": 0.0,
+      "energy_measurements_kwh": [
+        1.831028158690575e-05
+      ],
+      "source": "cv_baseline"
+    },
+    {
+      "name": "lightgbm",
+      "model_name": "lightgbm",
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "weighted_f1": 1.0,
+      "balanced_accuracy": 1.0,
+      "macro_precision": 1.0,
+      "macro_recall": 1.0,
+      "roc_auc_ovr": 1.0,
+      "brier_score": 1.990471525052938e-11,
+      "log_loss": 2.9557835804372764e-06,
+      "ece": 2.955777073343491e-06,
+      "mean_score": 1.0,
+      "std_score": 0.0,
+      "confidence_intervals": {
+        "accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_f1": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "weighted_f1": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "balanced_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_precision": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_recall": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "roc_auc_ovr": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "brier_score": {
+          "mean": 1.990471525052938e-11,
+          "std": 3.2978228096889454e-13,
+          "ci_lower": 1.9570410931775767e-11,
+          "ci_upper": 2.0146364772916974e-11,
+          "n_samples": 5
+        },
+        "log_loss": {
+          "mean": 2.9557835804372764e-06,
+          "std": 1.9341434245573185e-08,
+          "ci_lower": 2.9354578534074635e-06,
+          "ci_upper": 2.968431184739352e-06,
+          "n_samples": 5
+        },
+        "ece": {
+          "mean": 2.955777073343491e-06,
+          "std": 1.9341335040229878e-08,
+          "ci_lower": 2.9354514611057424e-06,
+          "ci_upper": 2.968424604832265e-06,
+          "n_samples": 5
+        }
+      },
+      "training_duration_seconds": 0.549396000104025,
+      "training_energy_kwh": 1.628751520623972e-05,
+      "training_energy_joules": 58.63505474246299,
+      "training_co2_kg": 1.1401260644367803e-05,
+      "inference_energy_kwh": 0.0,
+      "memory_mb": 0.0,
+      "energy_measurements_kwh": [
+        1.628751520623972e-05
+      ],
+      "source": "cv_baseline"
+    },
+    {
+      "name": "logistic_regression_tuned",
+      "model_name": "logistic_regression_tuned",
+      "base_model_name": "logistic_regression",
+      "hyperparameters": {
+        "C": 14.528246637516036,
+        "solver": "lbfgs"
+      },
+      "accuracy": 0.9862499999999998,
+      "macro_f1": 0.9757712837007702,
+      "weighted_f1": 0.9862361171021261,
+      "balanced_accuracy": 0.975412953060012,
+      "macro_precision": 0.9769260756013516,
+      "macro_recall": 0.975412953060012,
+      "roc_auc_ovr": 0.9994014337182755,
+      "brier_score": 0.03319669934418752,
+      "log_loss": 0.06393764193322587,
+      "ece": 0.037098031683720945,
+      "mean_score": 0.9757712837007702,
+      "std_score": 0.014767491050394363,
+      "confidence_intervals": {
+        "accuracy": {
+          "mean": 0.9862499999999998,
+          "std": 0.008291561975888513,
+          "ci_lower": 0.9799999999999999,
+          "ci_upper": 0.99375,
+          "n_samples": 5
+        },
+        "macro_f1": {
+          "mean": 0.9757712837007702,
+          "std": 0.014767491050394363,
+          "ci_lower": 0.9642822348348501,
+          "ci_upper": 0.989777715657439,
+          "n_samples": 5
+        },
+        "weighted_f1": {
+          "mean": 0.9862361171021261,
+          "std": 0.008322465507657487,
+          "ci_lower": 0.979894941123654,
+          "ci_upper": 0.9937934228739609,
+          "n_samples": 5
+        },
+        "balanced_accuracy": {
+          "mean": 0.975412953060012,
+          "std": 0.015033515694697802,
+          "ci_lower": 0.9636363636363636,
+          "ci_upper": 0.9902741702741704,
+          "n_samples": 5
+        },
+        "macro_precision": {
+          "mean": 0.9769260756013516,
+          "std": 0.014846594954978927,
+          "ci_lower": 0.9650690824196342,
+          "ci_upper": 0.9893121693121693,
+          "n_samples": 5
+        },
+        "macro_recall": {
+          "mean": 0.975412953060012,
+          "std": 0.015033515694697802,
+          "ci_lower": 0.9636363636363636,
+          "ci_upper": 0.9902741702741704,
+          "n_samples": 5
+        },
+        "roc_auc_ovr": {
+          "mean": 0.9994014337182755,
+          "std": 0.0005440199824703649,
+          "ci_lower": 0.9989263203843791,
+          "ci_upper": 0.9998765470521718,
+          "n_samples": 5
+        },
+        "brier_score": {
+          "mean": 0.03319669934418752,
+          "std": 0.002812377491278518,
+          "ci_lower": 0.03080267439217943,
+          "ci_upper": 0.03572170697152462,
+          "n_samples": 5
+        },
+        "log_loss": {
+          "mean": 0.06393764193322587,
+          "std": 0.005818138637829244,
+          "ci_lower": 0.05837572456226697,
+          "ci_upper": 0.06787099918039777,
+          "n_samples": 5
+        },
+        "ece": {
+          "mean": 0.037098031683720945,
+          "std": 0.01367210369552185,
+          "ci_lower": 0.025955965915355927,
+          "ci_upper": 0.050047343698470616,
+          "n_samples": 5
+        }
+      },
+      "training_duration_seconds": 0.437332300003618,
+      "training_energy_kwh": 1.4992531882124466e-05,
+      "training_energy_joules": 53.97311477564808,
+      "training_co2_kg": 1.0494772317487125e-05,
+      "inference_energy_kwh": 0.0,
+      "memory_mb": 0.0,
+      "source": "hpo_tuned"
+    },
+    {
+      "name": "decision_tree_tuned",
+      "model_name": "decision_tree_tuned",
+      "base_model_name": "decision_tree",
+      "hyperparameters": {
+        "max_depth": 7,
+        "min_samples_split": 29
+      },
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "weighted_f1": 1.0,
+      "balanced_accuracy": 1.0,
+      "macro_precision": 1.0,
+      "macro_recall": 1.0,
+      "roc_auc_ovr": 1.0,
+      "brier_score": 0.0,
+      "log_loss": 2.220446049250313e-16,
+      "ece": 0.0,
+      "mean_score": 1.0,
+      "std_score": 0.0,
+      "confidence_intervals": {
+        "accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_f1": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "weighted_f1": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "balanced_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_precision": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_recall": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "roc_auc_ovr": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "brier_score": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_lower": 0.0,
+          "ci_upper": 0.0,
+          "n_samples": 5
+        },
+        "log_loss": {
+          "mean": 2.220446049250313e-16,
+          "std": 0.0,
+          "ci_lower": 2.220446049250313e-16,
+          "ci_upper": 2.220446049250313e-16,
+          "n_samples": 5
+        },
+        "ece": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_lower": 0.0,
+          "ci_upper": 0.0,
+          "n_samples": 5
+        }
+      },
+      "training_duration_seconds": 0.4144818999338895,
+      "training_energy_kwh": 1.51276924189972e-05,
+      "training_energy_joules": 54.459692708389916,
+      "training_co2_kg": 1.058938469329804e-05,
+      "inference_energy_kwh": 0.0,
+      "memory_mb": 0.0,
+      "source": "hpo_tuned"
+    },
+    {
+      "name": "random_forest_tuned",
+      "model_name": "random_forest_tuned",
+      "base_model_name": "random_forest",
+      "hyperparameters": {
+        "max_depth": 16,
+        "n_estimators": 200,
+        "min_samples_split": 4
+      },
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "weighted_f1": 1.0,
+      "balanced_accuracy": 1.0,
+      "macro_precision": 1.0,
+      "macro_recall": 1.0,
+      "roc_auc_ovr": 1.0,
+      "brier_score": 0.02198508239749448,
+      "log_loss": 0.08736090392699354,
+      "ece": 0.07934331228956228,
+      "mean_score": 1.0,
+      "std_score": 0.0,
+      "confidence_intervals": {
+        "accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_f1": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "weighted_f1": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "balanced_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_precision": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_recall": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "roc_auc_ovr": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "brier_score": {
+          "mean": 0.02198508239749448,
+          "std": 0.00231680113654656,
+          "ci_lower": 0.019705441006644044,
+          "ci_upper": 0.023548338645806816,
+          "n_samples": 5
+        },
+        "log_loss": {
+          "mean": 0.08736090392699354,
+          "std": 0.005302597971325736,
+          "ci_lower": 0.08202500771435821,
+          "ci_upper": 0.09103940541932125,
+          "n_samples": 5
+        },
+        "ece": {
+          "mean": 0.07934331228956228,
+          "std": 0.0043096015667048815,
+          "ci_lower": 0.07511574863215484,
+          "ci_upper": 0.0822812799873737,
+          "n_samples": 5
+        }
+      },
+      "training_duration_seconds": 1.9687111000530422,
+      "training_energy_kwh": 3.078623695232694e-05,
+      "training_energy_joules": 110.83045302837698,
+      "training_co2_kg": 2.155036586662886e-05,
+      "inference_energy_kwh": 0.0,
+      "memory_mb": 0.0,
+      "source": "hpo_tuned"
+    },
+    {
+      "name": "extra_trees_tuned",
+      "model_name": "extra_trees_tuned",
+      "base_model_name": "extra_trees",
+      "hyperparameters": {
+        "n_estimators": 106,
+        "max_depth": 20
+      },
+      "accuracy": 0.9425000000000001,
+      "macro_f1": 0.9174570529166036,
+      "weighted_f1": 0.940621922319194,
+      "balanced_accuracy": 0.897947542653425,
+      "macro_precision": 0.9420848490746394,
+      "macro_recall": 0.897947542653425,
+      "roc_auc_ovr": 0.9944015742849798,
+      "brier_score": 0.14638937244781908,
+      "log_loss": 0.30243828586040244,
+      "ece": 0.1704601290350111,
+      "mean_score": 0.9174570529166036,
+      "std_score": 0.018228138818152474,
+      "confidence_intervals": {
+        "accuracy": {
+          "mean": 0.9425000000000001,
+          "std": 0.010000000000000009,
+          "ci_lower": 0.9375,
+          "ci_upper": 0.9525,
+          "n_samples": 5
+        },
+        "macro_f1": {
+          "mean": 0.9174570529166036,
+          "std": 0.018228138818152474,
+          "ci_lower": 0.9043238425266402,
+          "ci_upper": 0.9345881213980098,
+          "n_samples": 5
+        },
+        "weighted_f1": {
+          "mean": 0.940621922319194,
+          "std": 0.010223148593901412,
+          "ci_lower": 0.9353004868636038,
+          "ci_upper": 0.9509023470525368,
+          "n_samples": 5
+        },
+        "balanced_accuracy": {
+          "mean": 0.897947542653425,
+          "std": 0.02159097119256994,
+          "ci_lower": 0.8833036244800951,
+          "ci_upper": 0.9186843222137341,
+          "n_samples": 5
+        },
+        "macro_precision": {
+          "mean": 0.9420848490746394,
+          "std": 0.015892326511710703,
+          "ci_lower": 0.9298719639747682,
+          "ci_upper": 0.9562022897557163,
+          "n_samples": 5
+        },
+        "macro_recall": {
+          "mean": 0.897947542653425,
+          "std": 0.02159097119256994,
+          "ci_lower": 0.8833036244800951,
+          "ci_upper": 0.9186843222137341,
+          "n_samples": 5
+        },
+        "roc_auc_ovr": {
+          "mean": 0.9944015742849798,
+          "std": 0.002263651272444565,
+          "ci_lower": 0.9921854943828711,
+          "ci_upper": 0.9960501635814131,
+          "n_samples": 5
+        },
+        "brier_score": {
+          "mean": 0.14638937244781908,
+          "std": 0.009655925227731165,
+          "ci_lower": 0.13922956926109245,
+          "ci_upper": 0.15620919108520068,
+          "n_samples": 5
+        },
+        "log_loss": {
+          "mean": 0.30243828586040244,
+          "std": 0.01600995347173187,
+          "ci_lower": 0.28780009406190554,
+          "ci_upper": 0.317611186362657,
+          "n_samples": 5
+        },
+        "ece": {
+          "mean": 0.1704601290350111,
+          "std": 0.013175537270457364,
+          "ci_lower": 0.15926597627428257,
+          "ci_upper": 0.18204187004688185,
+          "n_samples": 5
+        }
+      },
+      "training_duration_seconds": 1.1660146000795066,
+      "training_energy_kwh": 2.5382079024537465e-05,
+      "training_energy_joules": 91.37548448833488,
+      "training_co2_kg": 1.7767455317176223e-05,
+      "inference_energy_kwh": 0.0,
+      "memory_mb": 0.0,
+      "source": "hpo_tuned"
+    },
+    {
+      "name": "lightgbm_tuned",
+      "model_name": "lightgbm_tuned",
+      "base_model_name": "lightgbm",
+      "hyperparameters": {
+        "n_estimators": 144,
+        "learning_rate": 0.2536999076681772,
+        "num_leaves": 97,
+        "max_depth": 7,
+        "min_child_samples": 16
+      },
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "weighted_f1": 1.0,
+      "balanced_accuracy": 1.0,
+      "macro_precision": 1.0,
+      "macro_recall": 1.0,
+      "roc_auc_ovr": 1.0,
+      "brier_score": 1.607682026717816e-11,
+      "log_loss": 2.663165925316383e-06,
+      "ece": 2.6631606591331903e-06,
+      "mean_score": 1.0,
+      "std_score": 0.0,
+      "confidence_intervals": {
+        "accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_f1": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "weighted_f1": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "balanced_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_precision": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_recall": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "roc_auc_ovr": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "brier_score": {
+          "mean": 1.607682026717816e-11,
+          "std": 1.4790067052276675e-12,
+          "ci_lower": 1.524040101727339e-11,
+          "ci_upper": 1.757448809760483e-11,
+          "n_samples": 5
+        },
+        "log_loss": {
+          "mean": 2.663165925316383e-06,
+          "std": 1.3490977042446906e-07,
+          "ci_lower": 2.5899885032123127e-06,
+          "ci_upper": 2.7996223657882514e-06,
+          "n_samples": 5
+        },
+        "ece": {
+          "mean": 2.6631606591331903e-06,
+          "std": 1.349092925309533e-07,
+          "ci_lower": 2.589983471446011e-06,
+          "ci_upper": 2.7996166188870576e-06,
+          "n_samples": 5
+        }
+      },
+      "training_duration_seconds": 0.461695599835366,
+      "training_energy_kwh": 1.4661351217400988e-05,
+      "training_energy_joules": 52.78086438264356,
+      "training_co2_kg": 1.0262945852180691e-05,
+      "inference_energy_kwh": 0.0,
+      "memory_mb": 0.0,
+      "source": "hpo_tuned"
+    }
+  ],
+  "statistics": {
+    "comparison_matrix": {
+      "dummy": {
+        "logistic_regression": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "logistic_regression_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        }
+      },
+      "logistic_regression": {
+        "dummy": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees": {
+          "statistic": 1.0,
+          "p_value": 0.125,
+          "significant": false,
+          "effect_size_r": 0.6860795645702549,
+          "interpretation": "No statistically significant difference detected (p=0.1250 \u2265 0.05, n=5, effect size r=0.686). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "logistic_regression_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        }
+      },
+      "decision_tree": {
+        "dummy": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "logistic_regression": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "logistic_regression_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.125,
+          "significant": false,
+          "effect_size_r": 0.6860795645702549,
+          "interpretation": "No statistically significant difference detected (p=0.1250 \u2265 0.05, n=5, effect size r=0.686). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree_tuned": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest_tuned": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm_tuned": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        }
+      },
+      "random_forest": {
+        "dummy": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "logistic_regression": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "logistic_regression_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.125,
+          "significant": false,
+          "effect_size_r": 0.6860795645702549,
+          "interpretation": "No statistically significant difference detected (p=0.1250 \u2265 0.05, n=5, effect size r=0.686). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree_tuned": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest_tuned": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm_tuned": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        }
+      },
+      "extra_trees": {
+        "dummy": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "logistic_regression": {
+          "statistic": 1.0,
+          "p_value": 0.125,
+          "significant": false,
+          "effect_size_r": 0.6860795645702549,
+          "interpretation": "No statistically significant difference detected (p=0.1250 \u2265 0.05, n=5, effect size r=0.686). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "logistic_regression_tuned": {
+          "statistic": 1.0,
+          "p_value": 0.125,
+          "significant": false,
+          "effect_size_r": 0.6860795645702549,
+          "interpretation": "No statistically significant difference detected (p=0.1250 \u2265 0.05, n=5, effect size r=0.686). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees_tuned": {
+          "statistic": 2.0,
+          "p_value": 0.375,
+          "significant": false,
+          "effect_size_r": 0.3967440023942471,
+          "interpretation": "No statistically significant difference detected (p=0.3750 \u2265 0.05, n=5, effect size r=0.397). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        }
+      },
+      "lightgbm": {
+        "dummy": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "logistic_regression": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "logistic_regression_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.125,
+          "significant": false,
+          "effect_size_r": 0.6860795645702549,
+          "interpretation": "No statistically significant difference detected (p=0.1250 \u2265 0.05, n=5, effect size r=0.686). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree_tuned": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest_tuned": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm_tuned": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        }
+      },
+      "logistic_regression_tuned": {
+        "dummy": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "logistic_regression": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree": {
+          "statistic": 0.0,
+          "p_value": 0.125,
+          "significant": false,
+          "effect_size_r": 0.6860795645702549,
+          "interpretation": "No statistically significant difference detected (p=0.1250 \u2265 0.05, n=5, effect size r=0.686). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest": {
+          "statistic": 0.0,
+          "p_value": 0.125,
+          "significant": false,
+          "effect_size_r": 0.6860795645702549,
+          "interpretation": "No statistically significant difference detected (p=0.1250 \u2265 0.05, n=5, effect size r=0.686). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees": {
+          "statistic": 1.0,
+          "p_value": 0.125,
+          "significant": false,
+          "effect_size_r": 0.6860795645702549,
+          "interpretation": "No statistically significant difference detected (p=0.1250 \u2265 0.05, n=5, effect size r=0.686). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm": {
+          "statistic": 0.0,
+          "p_value": 0.125,
+          "significant": false,
+          "effect_size_r": 0.6860795645702549,
+          "interpretation": "No statistically significant difference detected (p=0.1250 \u2265 0.05, n=5, effect size r=0.686). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.125,
+          "significant": false,
+          "effect_size_r": 0.6860795645702549,
+          "interpretation": "No statistically significant difference detected (p=0.1250 \u2265 0.05, n=5, effect size r=0.686). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.125,
+          "significant": false,
+          "effect_size_r": 0.6860795645702549,
+          "interpretation": "No statistically significant difference detected (p=0.1250 \u2265 0.05, n=5, effect size r=0.686). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.125,
+          "significant": false,
+          "effect_size_r": 0.6860795645702549,
+          "interpretation": "No statistically significant difference detected (p=0.1250 \u2265 0.05, n=5, effect size r=0.686). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        }
+      },
+      "decision_tree_tuned": {
+        "dummy": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "logistic_regression": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "logistic_regression_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.125,
+          "significant": false,
+          "effect_size_r": 0.6860795645702549,
+          "interpretation": "No statistically significant difference detected (p=0.1250 \u2265 0.05, n=5, effect size r=0.686). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest_tuned": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm_tuned": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        }
+      },
+      "random_forest_tuned": {
+        "dummy": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "logistic_regression": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "logistic_regression_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.125,
+          "significant": false,
+          "effect_size_r": 0.6860795645702549,
+          "interpretation": "No statistically significant difference detected (p=0.1250 \u2265 0.05, n=5, effect size r=0.686). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree_tuned": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm_tuned": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        }
+      },
+      "extra_trees_tuned": {
+        "dummy": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "logistic_regression": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees": {
+          "statistic": 2.0,
+          "p_value": 0.375,
+          "significant": false,
+          "effect_size_r": 0.3967440023942471,
+          "interpretation": "No statistically significant difference detected (p=0.3750 \u2265 0.05, n=5, effect size r=0.397). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "logistic_regression_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        }
+      },
+      "lightgbm_tuned": {
+        "dummy": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "logistic_regression": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "lightgbm": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "logistic_regression_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.125,
+          "significant": false,
+          "effect_size_r": 0.6860795645702549,
+          "interpretation": "No statistically significant difference detected (p=0.1250 \u2265 0.05, n=5, effect size r=0.686). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "decision_tree_tuned": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "random_forest_tuned": {
+          "statistic": null,
+          "p_value": 1.0,
+          "significant": false,
+          "effect_size_r": 0.0,
+          "interpretation": "All paired differences are zero \u2014 the two distributions are identical at this precision. No difference detected.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        },
+        "extra_trees_tuned": {
+          "statistic": 0.0,
+          "p_value": 0.0625,
+          "significant": false,
+          "effect_size_r": 0.8330390158819877,
+          "interpretation": "No statistically significant difference detected (p=0.0625 \u2265 0.05, n=5, effect size r=0.833). Cannot reject the null hypothesis of equal performance.",
+          "bonferroni_p_value": 1.0,
+          "significant_after_correction": false
+        }
+      }
+    },
+    "significant_differences": [],
+    "n_comparisons": 55,
+    "bonferroni_alpha": 0.0009090909090909091
+  },
+  "pareto_frontier": [
+    {
+      "name": "decision_tree",
+      "model_name": "decision_tree",
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "weighted_f1": 1.0,
+      "balanced_accuracy": 1.0,
+      "macro_precision": 1.0,
+      "macro_recall": 1.0,
+      "roc_auc_ovr": 1.0,
+      "brier_score": 0.0,
+      "log_loss": 2.220446049250313e-16,
+      "ece": 0.0,
+      "mean_score": 1.0,
+      "std_score": 0.0,
+      "confidence_intervals": {
+        "accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_f1": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "weighted_f1": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "balanced_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_precision": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "macro_recall": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "roc_auc_ovr": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci_lower": 1.0,
+          "ci_upper": 1.0,
+          "n_samples": 5
+        },
+        "brier_score": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_lower": 0.0,
+          "ci_upper": 0.0,
+          "n_samples": 5
+        },
+        "log_loss": {
+          "mean": 2.220446049250313e-16,
+          "std": 0.0,
+          "ci_lower": 2.220446049250313e-16,
+          "ci_upper": 2.220446049250313e-16,
+          "n_samples": 5
+        },
+        "ece": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci_lower": 0.0,
+          "ci_upper": 0.0,
+          "n_samples": 5
+        }
+      },
+      "training_duration_seconds": 0.3927912001963705,
+      "training_energy_kwh": 1.392833328074961e-05,
+      "training_energy_joules": 50.14199981069859,
+      "training_co2_kg": 9.749833296524727e-06,
+      "inference_energy_kwh": 0.0,
+      "memory_mb": 0.0,
+      "energy_measurements_kwh": [
+        1.392833328074961e-05
+      ],
+      "source": "cv_baseline"
+    }
+  ],
+  "efficiency_metrics": [
+    {
+      "name": "dummy",
+      "quality_metric": "macro_f1",
+      "quality_score": 0.2638460072422336,
+      "energy_kwh": 1.4261832792749374e-05,
+      "energy_joules": 51.342598053897746,
+      "co2_kg": 9.98328295492456e-06,
+      "energy_efficiency": 18500.14728656553,
+      "quality_per_joule": 0.005138929801823758,
+      "carbon_efficiency": 26428.78183795076,
+      "quality_retention_pct": 26.38460072422336,
+      "energy_reduction_pct": 48.903225882620504,
+      "carbon_reduction_pct": 48.903225882620504,
+      "raw_measurements": {
+        "macro_f1": 0.2638460072422336,
+        "training_energy_kwh": 1.4261832792749374e-05,
+        "energy_joules": 51.342598053897746,
+        "training_co2_kg": 9.98328295492456e-06
+      },
+      "baseline_measurements": {
+        "name": "random_forest",
+        "macro_f1": 1.0,
+        "training_energy_kwh": 2.7911415229437176e-05,
+        "energy_joules": 100.48109482597383,
+        "training_co2_kg": 1.953799066060602e-05
+      },
+      "note": "Efficiency metrics are reported alongside raw measurements (replacing single opaque CEGI ratios). Negative reduction % indicates higher cost than baseline. Do not claim reductions without statistical significance."
+    },
+    {
+      "name": "logistic_regression",
+      "quality_metric": "macro_f1",
+      "quality_score": 0.9625407282909892,
+      "energy_kwh": 1.5599177400086758e-05,
+      "energy_joules": 56.15703864031233,
+      "co2_kg": 1.091942418006073e-05,
+      "energy_efficiency": 61704.58246635723,
+      "quality_per_joule": 0.01714016179621034,
+      "carbon_efficiency": 88149.40352336747,
+      "quality_retention_pct": 96.25407282909893,
+      "energy_reduction_pct": 44.11183642298847,
+      "carbon_reduction_pct": 44.11183642298846,
+      "raw_measurements": {
+        "macro_f1": 0.9625407282909892,
+        "training_energy_kwh": 1.5599177400086758e-05,
+        "energy_joules": 56.15703864031233,
+        "training_co2_kg": 1.091942418006073e-05
+      },
+      "baseline_measurements": {
+        "name": "random_forest",
+        "macro_f1": 1.0,
+        "training_energy_kwh": 2.7911415229437176e-05,
+        "energy_joules": 100.48109482597383,
+        "training_co2_kg": 1.953799066060602e-05
+      },
+      "note": "Efficiency metrics are reported alongside raw measurements (replacing single opaque CEGI ratios). Negative reduction % indicates higher cost than baseline. Do not claim reductions without statistical significance."
+    },
+    {
+      "name": "decision_tree",
+      "quality_metric": "macro_f1",
+      "quality_score": 1.0,
+      "energy_kwh": 1.392833328074961e-05,
+      "energy_joules": 50.14199981069859,
+      "co2_kg": 9.749833296524727e-06,
+      "energy_efficiency": 71796.09934966899,
+      "quality_per_joule": 0.01994336093046361,
+      "carbon_efficiency": 102565.85621381285,
+      "quality_retention_pct": 100.0,
+      "energy_reduction_pct": 50.09807576485805,
+      "carbon_reduction_pct": 50.09807576485805,
+      "raw_measurements": {
+        "macro_f1": 1.0,
+        "training_energy_kwh": 1.392833328074961e-05,
+        "energy_joules": 50.14199981069859,
+        "training_co2_kg": 9.749833296524727e-06
+      },
+      "baseline_measurements": {
+        "name": "random_forest",
+        "macro_f1": 1.0,
+        "training_energy_kwh": 2.7911415229437176e-05,
+        "energy_joules": 100.48109482597383,
+        "training_co2_kg": 1.953799066060602e-05
+      },
+      "note": "Efficiency metrics are reported alongside raw measurements (replacing single opaque CEGI ratios). Negative reduction % indicates higher cost than baseline. Do not claim reductions without statistical significance."
+    },
+    {
+      "name": "random_forest",
+      "quality_metric": "macro_f1",
+      "quality_score": 1.0,
+      "energy_kwh": 2.7911415229437176e-05,
+      "energy_joules": 100.48109482597383,
+      "co2_kg": 1.953799066060602e-05,
+      "energy_efficiency": 35827.63510125906,
+      "quality_per_joule": 0.00995212086146085,
+      "carbon_efficiency": 51182.335858941515,
+      "quality_retention_pct": 100.0,
+      "energy_reduction_pct": 0.0,
+      "carbon_reduction_pct": 0.0,
+      "raw_measurements": {
+        "macro_f1": 1.0,
+        "training_energy_kwh": 2.7911415229437176e-05,
+        "energy_joules": 100.48109482597383,
+        "training_co2_kg": 1.953799066060602e-05
+      },
+      "baseline_measurements": {
+        "name": "random_forest",
+        "macro_f1": 1.0,
+        "training_energy_kwh": 2.7911415229437176e-05,
+        "energy_joules": 100.48109482597383,
+        "training_co2_kg": 1.953799066060602e-05
+      },
+      "note": "Efficiency metrics are reported alongside raw measurements (replacing single opaque CEGI ratios). Negative reduction % indicates higher cost than baseline. Do not claim reductions without statistical significance."
+    },
+    {
+      "name": "extra_trees",
+      "quality_metric": "macro_f1",
+      "quality_score": 0.9122020228263089,
+      "energy_kwh": 1.831028158690575e-05,
+      "energy_joules": 65.9170137128607,
+      "co2_kg": 1.2817197110834024e-05,
+      "energy_efficiency": 49819.11493259901,
+      "quality_per_joule": 0.013838643036833059,
+      "carbon_efficiency": 71170.16418942716,
+      "quality_retention_pct": 91.2202022826309,
+      "energy_reduction_pct": 34.39859127030382,
+      "carbon_reduction_pct": 34.39859127030381,
+      "raw_measurements": {
+        "macro_f1": 0.9122020228263089,
+        "training_energy_kwh": 1.831028158690575e-05,
+        "energy_joules": 65.9170137128607,
+        "training_co2_kg": 1.2817197110834024e-05
+      },
+      "baseline_measurements": {
+        "name": "random_forest",
+        "macro_f1": 1.0,
+        "training_energy_kwh": 2.7911415229437176e-05,
+        "energy_joules": 100.48109482597383,
+        "training_co2_kg": 1.953799066060602e-05
+      },
+      "note": "Efficiency metrics are reported alongside raw measurements (replacing single opaque CEGI ratios). Negative reduction % indicates higher cost than baseline. Do not claim reductions without statistical significance."
+    },
+    {
+      "name": "lightgbm",
+      "quality_metric": "macro_f1",
+      "quality_score": 1.0,
+      "energy_kwh": 1.628751520623972e-05,
+      "energy_joules": 58.63505474246299,
+      "co2_kg": 1.1401260644367803e-05,
+      "energy_efficiency": 61396.71934838174,
+      "quality_per_joule": 0.017054644263439372,
+      "carbon_efficiency": 87709.59906911677,
+      "quality_retention_pct": 100.0,
+      "energy_reduction_pct": 41.64568484846352,
+      "carbon_reduction_pct": 41.64568484846351,
+      "raw_measurements": {
+        "macro_f1": 1.0,
+        "training_energy_kwh": 1.628751520623972e-05,
+        "energy_joules": 58.63505474246299,
+        "training_co2_kg": 1.1401260644367803e-05
+      },
+      "baseline_measurements": {
+        "name": "random_forest",
+        "macro_f1": 1.0,
+        "training_energy_kwh": 2.7911415229437176e-05,
+        "energy_joules": 100.48109482597383,
+        "training_co2_kg": 1.953799066060602e-05
+      },
+      "note": "Efficiency metrics are reported alongside raw measurements (replacing single opaque CEGI ratios). Negative reduction % indicates higher cost than baseline. Do not claim reductions without statistical significance."
+    },
+    {
+      "name": "logistic_regression_tuned",
+      "quality_metric": "macro_f1",
+      "quality_score": 0.9757712837007702,
+      "energy_kwh": 1.4992531882124466e-05,
+      "energy_joules": 53.97311477564808,
+      "co2_kg": 1.0494772317487125e-05,
+      "energy_efficiency": 65083.822490594684,
+      "quality_per_joule": 0.018078839580720745,
+      "carbon_efficiency": 92976.88927227813,
+      "quality_retention_pct": 97.57712837007702,
+      "energy_reduction_pct": 46.2853038483252,
+      "carbon_reduction_pct": 46.28530384832519,
+      "raw_measurements": {
+        "macro_f1": 0.9757712837007702,
+        "training_energy_kwh": 1.4992531882124466e-05,
+        "energy_joules": 53.97311477564808,
+        "training_co2_kg": 1.0494772317487125e-05
+      },
+      "baseline_measurements": {
+        "name": "random_forest",
+        "macro_f1": 1.0,
+        "training_energy_kwh": 2.7911415229437176e-05,
+        "energy_joules": 100.48109482597383,
+        "training_co2_kg": 1.953799066060602e-05
+      },
+      "note": "Efficiency metrics are reported alongside raw measurements (replacing single opaque CEGI ratios). Negative reduction % indicates higher cost than baseline. Do not claim reductions without statistical significance."
+    },
+    {
+      "name": "decision_tree_tuned",
+      "quality_metric": "macro_f1",
+      "quality_score": 1.0,
+      "energy_kwh": 1.51276924189972e-05,
+      "energy_joules": 54.459692708389916,
+      "co2_kg": 1.058938469329804e-05,
+      "energy_efficiency": 66103.93524026245,
+      "quality_per_joule": 0.018362204233406235,
+      "carbon_efficiency": 94434.19320037492,
+      "quality_retention_pct": 100.0,
+      "energy_reduction_pct": 45.80105560880854,
+      "carbon_reduction_pct": 45.80105560880853,
+      "raw_measurements": {
+        "macro_f1": 1.0,
+        "training_energy_kwh": 1.51276924189972e-05,
+        "energy_joules": 54.459692708389916,
+        "training_co2_kg": 1.058938469329804e-05
+      },
+      "baseline_measurements": {
+        "name": "random_forest",
+        "macro_f1": 1.0,
+        "training_energy_kwh": 2.7911415229437176e-05,
+        "energy_joules": 100.48109482597383,
+        "training_co2_kg": 1.953799066060602e-05
+      },
+      "note": "Efficiency metrics are reported alongside raw measurements (replacing single opaque CEGI ratios). Negative reduction % indicates higher cost than baseline. Do not claim reductions without statistical significance."
+    },
+    {
+      "name": "random_forest_tuned",
+      "quality_metric": "macro_f1",
+      "quality_score": 1.0,
+      "energy_kwh": 3.078623695232694e-05,
+      "energy_joules": 110.83045302837698,
+      "co2_kg": 2.155036586662886e-05,
+      "energy_efficiency": 32482.047141666535,
+      "quality_per_joule": 0.009022790872685149,
+      "carbon_efficiency": 46402.92448809505,
+      "quality_retention_pct": 100.0,
+      "energy_reduction_pct": -10.299806366886738,
+      "carbon_reduction_pct": -10.299806366886749,
+      "raw_measurements": {
+        "macro_f1": 1.0,
+        "training_energy_kwh": 3.078623695232694e-05,
+        "energy_joules": 110.83045302837698,
+        "training_co2_kg": 2.155036586662886e-05
+      },
+      "baseline_measurements": {
+        "name": "random_forest",
+        "macro_f1": 1.0,
+        "training_energy_kwh": 2.7911415229437176e-05,
+        "energy_joules": 100.48109482597383,
+        "training_co2_kg": 1.953799066060602e-05
+      },
+      "note": "Efficiency metrics are reported alongside raw measurements (replacing single opaque CEGI ratios). Negative reduction % indicates higher cost than baseline. Do not claim reductions without statistical significance."
+    },
+    {
+      "name": "extra_trees_tuned",
+      "quality_metric": "macro_f1",
+      "quality_score": 0.9174570529166036,
+      "energy_kwh": 2.5382079024537465e-05,
+      "energy_joules": 91.37548448833488,
+      "co2_kg": 1.7767455317176223e-05,
+      "energy_efficiency": 36145.85913272415,
+      "quality_per_joule": 0.010040516425756709,
+      "carbon_efficiency": 51636.94161817736,
+      "quality_retention_pct": 91.74570529166036,
+      "energy_reduction_pct": 9.062013459755025,
+      "carbon_reduction_pct": 9.062013459755029,
+      "raw_measurements": {
+        "macro_f1": 0.9174570529166036,
+        "training_energy_kwh": 2.5382079024537465e-05,
+        "energy_joules": 91.37548448833488,
+        "training_co2_kg": 1.7767455317176223e-05
+      },
+      "baseline_measurements": {
+        "name": "random_forest",
+        "macro_f1": 1.0,
+        "training_energy_kwh": 2.7911415229437176e-05,
+        "energy_joules": 100.48109482597383,
+        "training_co2_kg": 1.953799066060602e-05
+      },
+      "note": "Efficiency metrics are reported alongside raw measurements (replacing single opaque CEGI ratios). Negative reduction % indicates higher cost than baseline. Do not claim reductions without statistical significance."
+    },
+    {
+      "name": "lightgbm_tuned",
+      "quality_metric": "macro_f1",
+      "quality_score": 1.0,
+      "energy_kwh": 1.4661351217400988e-05,
+      "energy_joules": 52.78086438264356,
+      "co2_kg": 1.0262945852180691e-05,
+      "energy_efficiency": 68206.53739016489,
+      "quality_per_joule": 0.018946260386156915,
+      "carbon_efficiency": 97437.91055737842,
+      "quality_retention_pct": 100.0,
+      "energy_reduction_pct": 47.47184584915571,
+      "carbon_reduction_pct": 47.47184584915571,
+      "raw_measurements": {
+        "macro_f1": 1.0,
+        "training_energy_kwh": 1.4661351217400988e-05,
+        "energy_joules": 52.78086438264356,
+        "training_co2_kg": 1.0262945852180691e-05
+      },
+      "baseline_measurements": {
+        "name": "random_forest",
+        "macro_f1": 1.0,
+        "training_energy_kwh": 2.7911415229437176e-05,
+        "energy_joules": 100.48109482597383,
+        "training_co2_kg": 1.953799066060602e-05
+      },
+      "note": "Efficiency metrics are reported alongside raw measurements (replacing single opaque CEGI ratios). Negative reduction % indicates higher cost than baseline. Do not claim reductions without statistical significance."
+    }
+  ],
+  "selection": {
+    "highest_quality": {
+      "name": "decision_tree",
+      "metrics": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "balanced_accuracy": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "roc_auc_ovr": 1.0,
+        "brier_score": 0.0,
+        "log_loss": 2.220446049250313e-16,
+        "ece": 0.0,
+        "mean_score": 1.0,
+        "std_score": 0.0,
+        "confidence_intervals": {
+          "accuracy": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "macro_f1": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "weighted_f1": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "balanced_accuracy": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "macro_precision": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "macro_recall": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "roc_auc_ovr": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "brier_score": {
+            "mean": 0.0,
+            "std": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n_samples": 5
+          },
+          "log_loss": {
+            "mean": 2.220446049250313e-16,
+            "std": 0.0,
+            "ci_lower": 2.220446049250313e-16,
+            "ci_upper": 2.220446049250313e-16,
+            "n_samples": 5
+          },
+          "ece": {
+            "mean": 0.0,
+            "std": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n_samples": 5
+          }
+        },
+        "training_duration_seconds": 0.3927912001963705,
+        "training_energy_kwh": 1.392833328074961e-05,
+        "training_energy_joules": 50.14199981069859,
+        "training_co2_kg": 9.749833296524727e-06,
+        "inference_energy_kwh": 0.0,
+        "memory_mb": 0.0,
+        "energy_measurements_kwh": [
+          1.392833328074961e-05
+        ],
+        "source": "cv_baseline"
+      }
+    },
+    "lowest_energy": {
+      "name": "decision_tree",
+      "metrics": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "balanced_accuracy": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "roc_auc_ovr": 1.0,
+        "brier_score": 0.0,
+        "log_loss": 2.220446049250313e-16,
+        "ece": 0.0,
+        "mean_score": 1.0,
+        "std_score": 0.0,
+        "confidence_intervals": {
+          "accuracy": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "macro_f1": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "weighted_f1": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "balanced_accuracy": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "macro_precision": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "macro_recall": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "roc_auc_ovr": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "brier_score": {
+            "mean": 0.0,
+            "std": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n_samples": 5
+          },
+          "log_loss": {
+            "mean": 2.220446049250313e-16,
+            "std": 0.0,
+            "ci_lower": 2.220446049250313e-16,
+            "ci_upper": 2.220446049250313e-16,
+            "n_samples": 5
+          },
+          "ece": {
+            "mean": 0.0,
+            "std": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n_samples": 5
+          }
+        },
+        "training_duration_seconds": 0.3927912001963705,
+        "training_energy_kwh": 1.392833328074961e-05,
+        "training_energy_joules": 50.14199981069859,
+        "training_co2_kg": 9.749833296524727e-06,
+        "inference_energy_kwh": 0.0,
+        "memory_mb": 0.0,
+        "energy_measurements_kwh": [
+          1.392833328074961e-05
+        ],
+        "source": "cv_baseline"
+      }
+    },
+    "lowest_carbon": {
+      "name": "decision_tree",
+      "metrics": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "balanced_accuracy": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "roc_auc_ovr": 1.0,
+        "brier_score": 0.0,
+        "log_loss": 2.220446049250313e-16,
+        "ece": 0.0,
+        "mean_score": 1.0,
+        "std_score": 0.0,
+        "confidence_intervals": {
+          "accuracy": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "macro_f1": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "weighted_f1": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "balanced_accuracy": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "macro_precision": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "macro_recall": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "roc_auc_ovr": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "brier_score": {
+            "mean": 0.0,
+            "std": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n_samples": 5
+          },
+          "log_loss": {
+            "mean": 2.220446049250313e-16,
+            "std": 0.0,
+            "ci_lower": 2.220446049250313e-16,
+            "ci_upper": 2.220446049250313e-16,
+            "n_samples": 5
+          },
+          "ece": {
+            "mean": 0.0,
+            "std": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n_samples": 5
+          }
+        },
+        "training_duration_seconds": 0.3927912001963705,
+        "training_energy_kwh": 1.392833328074961e-05,
+        "training_energy_joules": 50.14199981069859,
+        "training_co2_kg": 9.749833296524727e-06,
+        "inference_energy_kwh": 0.0,
+        "memory_mb": 0.0,
+        "energy_measurements_kwh": [
+          1.392833328074961e-05
+        ],
+        "source": "cv_baseline"
+      }
+    },
+    "best_balanced": {
+      "name": "decision_tree",
+      "metrics": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "balanced_accuracy": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "roc_auc_ovr": 1.0,
+        "brier_score": 0.0,
+        "log_loss": 2.220446049250313e-16,
+        "ece": 0.0,
+        "mean_score": 1.0,
+        "std_score": 0.0,
+        "confidence_intervals": {
+          "accuracy": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "macro_f1": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "weighted_f1": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "balanced_accuracy": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "macro_precision": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "macro_recall": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "roc_auc_ovr": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "brier_score": {
+            "mean": 0.0,
+            "std": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n_samples": 5
+          },
+          "log_loss": {
+            "mean": 2.220446049250313e-16,
+            "std": 0.0,
+            "ci_lower": 2.220446049250313e-16,
+            "ci_upper": 2.220446049250313e-16,
+            "n_samples": 5
+          },
+          "ece": {
+            "mean": 0.0,
+            "std": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n_samples": 5
+          }
+        },
+        "training_duration_seconds": 0.3927912001963705,
+        "training_energy_kwh": 1.392833328074961e-05,
+        "training_energy_joules": 50.14199981069859,
+        "training_co2_kg": 9.749833296524727e-06,
+        "inference_energy_kwh": 0.0,
+        "memory_mb": 0.0,
+        "energy_measurements_kwh": [
+          1.392833328074961e-05
+        ],
+        "source": "cv_baseline"
+      }
+    },
+    "recommended": {
+      "name": "decision_tree",
+      "metrics": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "balanced_accuracy": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "roc_auc_ovr": 1.0,
+        "brier_score": 0.0,
+        "log_loss": 2.220446049250313e-16,
+        "ece": 0.0,
+        "mean_score": 1.0,
+        "std_score": 0.0,
+        "confidence_intervals": {
+          "accuracy": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "macro_f1": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "weighted_f1": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "balanced_accuracy": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "macro_precision": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "macro_recall": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "roc_auc_ovr": {
+            "mean": 1.0,
+            "std": 0.0,
+            "ci_lower": 1.0,
+            "ci_upper": 1.0,
+            "n_samples": 5
+          },
+          "brier_score": {
+            "mean": 0.0,
+            "std": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n_samples": 5
+          },
+          "log_loss": {
+            "mean": 2.220446049250313e-16,
+            "std": 0.0,
+            "ci_lower": 2.220446049250313e-16,
+            "ci_upper": 2.220446049250313e-16,
+            "n_samples": 5
+          },
+          "ece": {
+            "mean": 0.0,
+            "std": 0.0,
+            "ci_lower": 0.0,
+            "ci_upper": 0.0,
+            "n_samples": 5
+          }
+        },
+        "training_duration_seconds": 0.3927912001963705,
+        "training_energy_kwh": 1.392833328074961e-05,
+        "training_energy_joules": 50.14199981069859,
+        "training_co2_kg": 9.749833296524727e-06,
+        "inference_energy_kwh": 0.0,
+        "memory_mb": 0.0,
+        "energy_measurements_kwh": [
+          1.392833328074961e-05
+        ],
+        "source": "cv_baseline"
+      },
+      "justification": "'decision_tree' achieves the best normalised balance of macro_f1 (1.0000) and training_energy_kwh (0.000014 kWh) among Pareto-optimal models that pass the quality gate (minimum macro_f1 = 0.995)."
+    },
+    "pareto_optimal": [
+      "decision_tree"
+    ],
+    "quality_constraint_violations": [
+      "dummy",
+      "logistic_regression",
+      "extra_trees",
+      "logistic_regression_tuned",
+      "extra_trees_tuned"
+    ],
+    "critical_class_recall_violations": {}
+  },
+  "best_model": {
+    "name": "decision_tree",
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "weighted_f1": 1.0,
+    "balanced_accuracy": 1.0,
+    "macro_precision": 1.0,
+    "macro_recall": 1.0,
+    "roc_auc_ovr": 1.0,
+    "brier_score": 0.0,
+    "log_loss": 2.220446049250313e-16,
+    "ece": 0.0,
+    "mean_score": 1.0,
+    "std_score": 0.0,
+    "confidence_intervals": {
+      "accuracy": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_lower": 1.0,
+        "ci_upper": 1.0,
+        "n_samples": 5
+      },
+      "macro_f1": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_lower": 1.0,
+        "ci_upper": 1.0,
+        "n_samples": 5
+      },
+      "weighted_f1": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_lower": 1.0,
+        "ci_upper": 1.0,
+        "n_samples": 5
+      },
+      "balanced_accuracy": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_lower": 1.0,
+        "ci_upper": 1.0,
+        "n_samples": 5
+      },
+      "macro_precision": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_lower": 1.0,
+        "ci_upper": 1.0,
+        "n_samples": 5
+      },
+      "macro_recall": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_lower": 1.0,
+        "ci_upper": 1.0,
+        "n_samples": 5
+      },
+      "roc_auc_ovr": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_lower": 1.0,
+        "ci_upper": 1.0,
+        "n_samples": 5
+      },
+      "brier_score": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "n_samples": 5
+      },
+      "log_loss": {
+        "mean": 2.220446049250313e-16,
+        "std": 0.0,
+        "ci_lower": 2.220446049250313e-16,
+        "ci_upper": 2.220446049250313e-16,
+        "n_samples": 5
+      },
+      "ece": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "n_samples": 5
+      }
+    },
+    "training_duration_seconds": 0.3927912001963705,
+    "training_energy_kwh": 1.392833328074961e-05,
+    "training_energy_joules": 50.14199981069859,
+    "training_co2_kg": 9.749833296524727e-06,
+    "inference_energy_kwh": 0.0,
+    "memory_mb": 0.0,
+    "energy_measurements_kwh": [
+      1.392833328074961e-05
+    ],
+    "source": "cv_baseline",
+    "justification": "'decision_tree' achieves the best normalised balance of macro_f1 (1.0000) and training_energy_kwh (0.000014 kWh) among Pareto-optimal models that pass the quality gate (minimum macro_f1 = 0.995)."
+  },
+  "holdout_test_metrics": {
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "weighted_f1": 1.0,
+    "balanced_accuracy": 1.0,
+    "macro_precision": 1.0,
+    "macro_recall": 1.0,
+    "per_class_recall": {
+      "0": 1.0,
+      "1": 1.0,
+      "2": 1.0
+    },
+    "confusion_matrix": [
+      [
+        42,
+        0,
+        0
+      ],
+      [
+        0,
+        131,
+        0
+      ],
+      [
+        0,
+        0,
+        27
+      ]
+    ],
+    "roc_auc_ovr": 1.0,
+    "brier_score": 0.0,
+    "log_loss": 2.220446049250313e-16,
+    "ece": 0.0
+  },
+  "inference_measurements": {
+    "energy_per_prediction_joules": 0.03464784045807995,
+    "energy_per_prediction_kwh": 9.62440012724443e-09,
+    "energy_per_1k_predictions_joules": 34.64784045807995,
+    "energy_per_1k_predictions_kwh": 9.62440012724443e-06,
+    "co2_per_prediction_kg": 6.7370800890711004e-09,
+    "co2_per_1k_predictions_kg": 6.7370800890711e-06,
+    "measurement_uncertainty_pct": 100.0,
+    "n_repetitions": 3,
+    "mean_duration_seconds": 0.0004350666422396898,
+    "median_duration_seconds": 0.0004211999475955963,
+    "energy_stats_joules": {
+      "mean": 0.03464784045807995,
+      "median": 0.03461534355236368,
+      "std": 0.0015957231105426302,
+      "ci_lower": 0.0330686139945389,
+      "ci_upper": 0.03625956382733728
+    },
+    "outlier_count": 0,
+    "hardware_specs": {
+      "cpu_count": 16,
+      "cpu_model": "AMD Ryzen 7 7435HS",
+      "ram_gb": 23.69,
+      "os": "Windows-10-10.0.26300-SP0",
+      "machine": "AMD64",
+      "python_version": "3.10.9",
+      "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+      "gpu_count": 1
+    },
+    "method": "codecarbon_cpu_load",
+    "warning": "Inference energy measurements at this scale (< 10 ms per batch) are dominated by OS and measurement overhead. Report values carry \u00b1100% uncertainty and should NOT be treated as precise environmental measurements."
+  },
+  "carbon": {
+    "total_energy_kwh": 0.0008811830574253319,
+    "total_energy_joules": 3172.259006731195,
+    "total_co2_kg": 0.0006168281401977323,
+    "training_co2_kg": 9.749833296524727e-06,
+    "inference_co2_kg": 6.7370800890711e-06,
+    "carbon_intensity_kg_per_kwh": 0.7,
+    "carbon_intensity_source": "user_configured",
+    "session_summary": {
+      "ingestion": {
+        "n_measurements": 1,
+        "total_duration_s": 0.008980800164863467,
+        "mean_duration_s": 0.008980800164863467,
+        "median_duration_s": 0.008980800164863467,
+        "total_energy_kwh": 1.0813445975738593e-05,
+        "total_energy_joules": 38.928405512658934,
+        "mean_energy_kwh": 1.0813445975738593e-05,
+        "median_energy_kwh": 1.0813445975738593e-05,
+        "ci_95_energy_kwh": [
+          1.0813445975738593e-05,
+          1.0813445975738593e-05
+        ],
+        "mean_energy_joules": 38.928405512658934,
+        "median_energy_joules": 38.928405512658934,
+        "outlier_count": 0,
+        "total_co2_kg": 7.569412183017014e-06,
+        "mean_co2_kg": 7.569412183017014e-06,
+        "median_co2_kg": 7.569412183017014e-06,
+        "any_estimated": false,
+        "max_uncertainty_pct": 100.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD Ryzen 7 7435HS",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9",
+          "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+          "gpu_count": 1
+        }
+      },
+      "preprocessing": {
+        "n_measurements": 1,
+        "total_duration_s": 0.02046110015362501,
+        "mean_duration_s": 0.02046110015362501,
+        "median_duration_s": 0.02046110015362501,
+        "total_energy_kwh": 1.026217208103387e-05,
+        "total_energy_joules": 36.94381949172193,
+        "mean_energy_kwh": 1.026217208103387e-05,
+        "median_energy_kwh": 1.026217208103387e-05,
+        "ci_95_energy_kwh": [
+          1.026217208103387e-05,
+          1.026217208103387e-05
+        ],
+        "mean_energy_joules": 36.94381949172193,
+        "median_energy_joules": 36.94381949172193,
+        "outlier_count": 0,
+        "total_co2_kg": 7.183520456723709e-06,
+        "mean_co2_kg": 7.183520456723709e-06,
+        "median_co2_kg": 7.183520456723709e-06,
+        "any_estimated": false,
+        "max_uncertainty_pct": 100.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD Ryzen 7 7435HS",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9",
+          "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+          "gpu_count": 1
+        }
+      },
+      "train_dummy_rep1": {
+        "n_measurements": 1,
+        "total_duration_s": 0.3116087999660522,
+        "mean_duration_s": 0.3116087999660522,
+        "median_duration_s": 0.3116087999660522,
+        "total_energy_kwh": 1.4261832792749374e-05,
+        "total_energy_joules": 51.342598053897746,
+        "mean_energy_kwh": 1.4261832792749374e-05,
+        "median_energy_kwh": 1.4261832792749374e-05,
+        "ci_95_energy_kwh": [
+          1.4261832792749374e-05,
+          1.4261832792749374e-05
+        ],
+        "mean_energy_joules": 51.342598053897746,
+        "median_energy_joules": 51.342598053897746,
+        "outlier_count": 0,
+        "total_co2_kg": 9.98328295492456e-06,
+        "mean_co2_kg": 9.98328295492456e-06,
+        "median_co2_kg": 9.98328295492456e-06,
+        "any_estimated": false,
+        "max_uncertainty_pct": 100.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD Ryzen 7 7435HS",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9",
+          "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+          "gpu_count": 1
+        }
+      },
+      "train_logistic_regression_rep1": {
+        "n_measurements": 1,
+        "total_duration_s": 0.41808339999988675,
+        "mean_duration_s": 0.41808339999988675,
+        "median_duration_s": 0.41808339999988675,
+        "total_energy_kwh": 1.5599177400086758e-05,
+        "total_energy_joules": 56.15703864031233,
+        "mean_energy_kwh": 1.5599177400086758e-05,
+        "median_energy_kwh": 1.5599177400086758e-05,
+        "ci_95_energy_kwh": [
+          1.5599177400086758e-05,
+          1.5599177400086758e-05
+        ],
+        "mean_energy_joules": 56.15703864031233,
+        "median_energy_joules": 56.15703864031233,
+        "outlier_count": 0,
+        "total_co2_kg": 1.091942418006073e-05,
+        "mean_co2_kg": 1.091942418006073e-05,
+        "median_co2_kg": 1.091942418006073e-05,
+        "any_estimated": false,
+        "max_uncertainty_pct": 100.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD Ryzen 7 7435HS",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9",
+          "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+          "gpu_count": 1
+        }
+      },
+      "train_decision_tree_rep1": {
+        "n_measurements": 1,
+        "total_duration_s": 0.3927912001963705,
+        "mean_duration_s": 0.3927912001963705,
+        "median_duration_s": 0.3927912001963705,
+        "total_energy_kwh": 1.392833328074961e-05,
+        "total_energy_joules": 50.14199981069859,
+        "mean_energy_kwh": 1.392833328074961e-05,
+        "median_energy_kwh": 1.392833328074961e-05,
+        "ci_95_energy_kwh": [
+          1.392833328074961e-05,
+          1.392833328074961e-05
+        ],
+        "mean_energy_joules": 50.14199981069859,
+        "median_energy_joules": 50.14199981069859,
+        "outlier_count": 0,
+        "total_co2_kg": 9.749833296524727e-06,
+        "mean_co2_kg": 9.749833296524727e-06,
+        "median_co2_kg": 9.749833296524727e-06,
+        "any_estimated": false,
+        "max_uncertainty_pct": 100.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD Ryzen 7 7435HS",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9",
+          "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+          "gpu_count": 1
+        }
+      },
+      "train_random_forest_rep1": {
+        "n_measurements": 1,
+        "total_duration_s": 1.3595769999083132,
+        "mean_duration_s": 1.3595769999083132,
+        "median_duration_s": 1.3595769999083132,
+        "total_energy_kwh": 2.7911415229437176e-05,
+        "total_energy_joules": 100.48109482597383,
+        "mean_energy_kwh": 2.7911415229437176e-05,
+        "median_energy_kwh": 2.7911415229437176e-05,
+        "ci_95_energy_kwh": [
+          2.7911415229437176e-05,
+          2.7911415229437176e-05
+        ],
+        "mean_energy_joules": 100.48109482597383,
+        "median_energy_joules": 100.48109482597383,
+        "outlier_count": 0,
+        "total_co2_kg": 1.953799066060602e-05,
+        "mean_co2_kg": 1.953799066060602e-05,
+        "median_co2_kg": 1.953799066060602e-05,
+        "any_estimated": false,
+        "max_uncertainty_pct": 50.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD Ryzen 7 7435HS",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9",
+          "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+          "gpu_count": 1
+        }
+      },
+      "train_extra_trees_rep1": {
+        "n_measurements": 1,
+        "total_duration_s": 0.9841739998664707,
+        "mean_duration_s": 0.9841739998664707,
+        "median_duration_s": 0.9841739998664707,
+        "total_energy_kwh": 1.831028158690575e-05,
+        "total_energy_joules": 65.9170137128607,
+        "mean_energy_kwh": 1.831028158690575e-05,
+        "median_energy_kwh": 1.831028158690575e-05,
+        "ci_95_energy_kwh": [
+          1.831028158690575e-05,
+          1.831028158690575e-05
+        ],
+        "mean_energy_joules": 65.9170137128607,
+        "median_energy_joules": 65.9170137128607,
+        "outlier_count": 0,
+        "total_co2_kg": 1.2817197110834024e-05,
+        "mean_co2_kg": 1.2817197110834024e-05,
+        "median_co2_kg": 1.2817197110834024e-05,
+        "any_estimated": false,
+        "max_uncertainty_pct": 100.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD Ryzen 7 7435HS",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9",
+          "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+          "gpu_count": 1
+        }
+      },
+      "train_lightgbm_rep1": {
+        "n_measurements": 1,
+        "total_duration_s": 0.549396000104025,
+        "mean_duration_s": 0.549396000104025,
+        "median_duration_s": 0.549396000104025,
+        "total_energy_kwh": 1.628751520623972e-05,
+        "total_energy_joules": 58.63505474246299,
+        "mean_energy_kwh": 1.628751520623972e-05,
+        "median_energy_kwh": 1.628751520623972e-05,
+        "ci_95_energy_kwh": [
+          1.628751520623972e-05,
+          1.628751520623972e-05
+        ],
+        "mean_energy_joules": 58.63505474246299,
+        "median_energy_joules": 58.63505474246299,
+        "outlier_count": 0,
+        "total_co2_kg": 1.1401260644367803e-05,
+        "mean_co2_kg": 1.1401260644367803e-05,
+        "median_co2_kg": 1.1401260644367803e-05,
+        "any_estimated": false,
+        "max_uncertainty_pct": 100.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD Ryzen 7 7435HS",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9",
+          "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+          "gpu_count": 1
+        }
+      },
+      "hpo_logistic_regression": {
+        "n_measurements": 1,
+        "total_duration_s": 0.7339982998091727,
+        "mean_duration_s": 0.7339982998091727,
+        "median_duration_s": 0.7339982998091727,
+        "total_energy_kwh": 1.7050331489300644e-05,
+        "total_energy_joules": 61.38119336148232,
+        "mean_energy_kwh": 1.7050331489300644e-05,
+        "median_energy_kwh": 1.7050331489300644e-05,
+        "ci_95_energy_kwh": [
+          1.7050331489300644e-05,
+          1.7050331489300644e-05
+        ],
+        "mean_energy_joules": 61.38119336148232,
+        "median_energy_joules": 61.38119336148232,
+        "outlier_count": 0,
+        "total_co2_kg": 1.193523204251045e-05,
+        "mean_co2_kg": 1.193523204251045e-05,
+        "median_co2_kg": 1.193523204251045e-05,
+        "any_estimated": false,
+        "max_uncertainty_pct": 100.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD Ryzen 7 7435HS",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9",
+          "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+          "gpu_count": 1
+        }
+      },
+      "cv_tuned_logistic_regression": {
+        "n_measurements": 1,
+        "total_duration_s": 0.437332300003618,
+        "mean_duration_s": 0.437332300003618,
+        "median_duration_s": 0.437332300003618,
+        "total_energy_kwh": 1.4992531882124466e-05,
+        "total_energy_joules": 53.97311477564808,
+        "mean_energy_kwh": 1.4992531882124466e-05,
+        "median_energy_kwh": 1.4992531882124466e-05,
+        "ci_95_energy_kwh": [
+          1.4992531882124466e-05,
+          1.4992531882124466e-05
+        ],
+        "mean_energy_joules": 53.97311477564808,
+        "median_energy_joules": 53.97311477564808,
+        "outlier_count": 0,
+        "total_co2_kg": 1.0494772317487125e-05,
+        "mean_co2_kg": 1.0494772317487125e-05,
+        "median_co2_kg": 1.0494772317487125e-05,
+        "any_estimated": false,
+        "max_uncertainty_pct": 100.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD Ryzen 7 7435HS",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9",
+          "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+          "gpu_count": 1
+        }
+      },
+      "hpo_decision_tree": {
+        "n_measurements": 1,
+        "total_duration_s": 0.1141152000054717,
+        "mean_duration_s": 0.1141152000054717,
+        "median_duration_s": 0.1141152000054717,
+        "total_energy_kwh": 1.1621714785678254e-05,
+        "total_energy_joules": 41.83817322844171,
+        "mean_energy_kwh": 1.1621714785678254e-05,
+        "median_energy_kwh": 1.1621714785678254e-05,
+        "ci_95_energy_kwh": [
+          1.1621714785678254e-05,
+          1.1621714785678254e-05
+        ],
+        "mean_energy_joules": 41.83817322844171,
+        "median_energy_joules": 41.83817322844171,
+        "outlier_count": 0,
+        "total_co2_kg": 8.135200349974777e-06,
+        "mean_co2_kg": 8.135200349974777e-06,
+        "median_co2_kg": 8.135200349974777e-06,
+        "any_estimated": false,
+        "max_uncertainty_pct": 100.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD Ryzen 7 7435HS",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9",
+          "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+          "gpu_count": 1
+        }
+      },
+      "cv_tuned_decision_tree": {
+        "n_measurements": 1,
+        "total_duration_s": 0.4144818999338895,
+        "mean_duration_s": 0.4144818999338895,
+        "median_duration_s": 0.4144818999338895,
+        "total_energy_kwh": 1.51276924189972e-05,
+        "total_energy_joules": 54.459692708389916,
+        "mean_energy_kwh": 1.51276924189972e-05,
+        "median_energy_kwh": 1.51276924189972e-05,
+        "ci_95_energy_kwh": [
+          1.51276924189972e-05,
+          1.51276924189972e-05
+        ],
+        "mean_energy_joules": 54.459692708389916,
+        "median_energy_joules": 54.459692708389916,
+        "outlier_count": 0,
+        "total_co2_kg": 1.058938469329804e-05,
+        "mean_co2_kg": 1.058938469329804e-05,
+        "median_co2_kg": 1.058938469329804e-05,
+        "any_estimated": false,
+        "max_uncertainty_pct": 100.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD Ryzen 7 7435HS",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9",
+          "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+          "gpu_count": 1
+        }
+      },
+      "hpo_random_forest": {
+        "n_measurements": 1,
+        "total_duration_s": 8.164004700025544,
+        "mean_duration_s": 8.164004700025544,
+        "median_duration_s": 8.164004700025544,
+        "total_energy_kwh": 0.00010165587134370371,
+        "total_energy_joules": 365.96113683733336,
+        "mean_energy_kwh": 0.00010165587134370371,
+        "median_energy_kwh": 0.00010165587134370371,
+        "ci_95_energy_kwh": [
+          0.00010165587134370371,
+          0.00010165587134370371
+        ],
+        "mean_energy_joules": 365.96113683733336,
+        "median_energy_joules": 365.96113683733336,
+        "outlier_count": 0,
+        "total_co2_kg": 7.115910994059259e-05,
+        "mean_co2_kg": 7.115910994059259e-05,
+        "median_co2_kg": 7.115910994059259e-05,
+        "any_estimated": false,
+        "max_uncertainty_pct": 50.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD Ryzen 7 7435HS",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9",
+          "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+          "gpu_count": 1
+        }
+      },
+      "cv_tuned_random_forest": {
+        "n_measurements": 1,
+        "total_duration_s": 1.9687111000530422,
+        "mean_duration_s": 1.9687111000530422,
+        "median_duration_s": 1.9687111000530422,
+        "total_energy_kwh": 3.078623695232694e-05,
+        "total_energy_joules": 110.83045302837698,
+        "mean_energy_kwh": 3.078623695232694e-05,
+        "median_energy_kwh": 3.078623695232694e-05,
+        "ci_95_energy_kwh": [
+          3.078623695232694e-05,
+          3.078623695232694e-05
+        ],
+        "mean_energy_joules": 110.83045302837698,
+        "median_energy_joules": 110.83045302837698,
+        "outlier_count": 0,
+        "total_co2_kg": 2.155036586662886e-05,
+        "mean_co2_kg": 2.155036586662886e-05,
+        "median_co2_kg": 2.155036586662886e-05,
+        "any_estimated": false,
+        "max_uncertainty_pct": 50.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD Ryzen 7 7435HS",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9",
+          "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+          "gpu_count": 1
+        }
+      },
+      "hpo_extra_trees": {
+        "n_measurements": 1,
+        "total_duration_s": 3.408215400064364,
+        "mean_duration_s": 3.408215400064364,
+        "median_duration_s": 3.408215400064364,
+        "total_energy_kwh": 4.6297160222531634e-05,
+        "total_energy_joules": 166.66977680111387,
+        "mean_energy_kwh": 4.6297160222531634e-05,
+        "median_energy_kwh": 4.6297160222531634e-05,
+        "ci_95_energy_kwh": [
+          4.6297160222531634e-05,
+          4.6297160222531634e-05
+        ],
+        "mean_energy_joules": 166.66977680111387,
+        "median_energy_joules": 166.66977680111387,
+        "outlier_count": 0,
+        "total_co2_kg": 3.240801215577214e-05,
+        "mean_co2_kg": 3.240801215577214e-05,
+        "median_co2_kg": 3.240801215577214e-05,
+        "any_estimated": false,
+        "max_uncertainty_pct": 50.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD Ryzen 7 7435HS",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9",
+          "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+          "gpu_count": 1
+        }
+      },
+      "cv_tuned_extra_trees": {
+        "n_measurements": 1,
+        "total_duration_s": 1.1660146000795066,
+        "mean_duration_s": 1.1660146000795066,
+        "median_duration_s": 1.1660146000795066,
+        "total_energy_kwh": 2.5382079024537465e-05,
+        "total_energy_joules": 91.37548448833488,
+        "mean_energy_kwh": 2.5382079024537465e-05,
+        "median_energy_kwh": 2.5382079024537465e-05,
+        "ci_95_energy_kwh": [
+          2.5382079024537465e-05,
+          2.5382079024537465e-05
+        ],
+        "mean_energy_joules": 91.37548448833488,
+        "median_energy_joules": 91.37548448833488,
+        "outlier_count": 0,
+        "total_co2_kg": 1.7767455317176223e-05,
+        "mean_co2_kg": 1.7767455317176223e-05,
+        "median_co2_kg": 1.7767455317176223e-05,
+        "any_estimated": false,
+        "max_uncertainty_pct": 50.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD Ryzen 7 7435HS",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9",
+          "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+          "gpu_count": 1
+        }
+      },
+      "hpo_lightgbm": {
+        "n_measurements": 1,
+        "total_duration_s": 1.4409410001244396,
+        "mean_duration_s": 1.4409410001244396,
+        "median_duration_s": 1.4409410001244396,
+        "total_energy_kwh": 2.394985987057204e-05,
+        "total_energy_joules": 86.21949553405935,
+        "mean_energy_kwh": 2.394985987057204e-05,
+        "median_energy_kwh": 2.394985987057204e-05,
+        "ci_95_energy_kwh": [
+          2.394985987057204e-05,
+          2.394985987057204e-05
+        ],
+        "mean_energy_joules": 86.21949553405935,
+        "median_energy_joules": 86.21949553405935,
+        "outlier_count": 0,
+        "total_co2_kg": 1.6764901909400426e-05,
+        "mean_co2_kg": 1.6764901909400426e-05,
+        "median_co2_kg": 1.6764901909400426e-05,
+        "any_estimated": false,
+        "max_uncertainty_pct": 50.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD Ryzen 7 7435HS",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9",
+          "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+          "gpu_count": 1
+        }
+      },
+      "cv_tuned_lightgbm": {
+        "n_measurements": 1,
+        "total_duration_s": 0.461695599835366,
+        "mean_duration_s": 0.461695599835366,
+        "median_duration_s": 0.461695599835366,
+        "total_energy_kwh": 1.4661351217400988e-05,
+        "total_energy_joules": 52.78086438264356,
+        "mean_energy_kwh": 1.4661351217400988e-05,
+        "median_energy_kwh": 1.4661351217400988e-05,
+        "ci_95_energy_kwh": [
+          1.4661351217400988e-05,
+          1.4661351217400988e-05
+        ],
+        "mean_energy_joules": 52.78086438264356,
+        "median_energy_joules": 52.78086438264356,
+        "outlier_count": 0,
+        "total_co2_kg": 1.0262945852180691e-05,
+        "mean_co2_kg": 1.0262945852180691e-05,
+        "median_co2_kg": 1.0262945852180691e-05,
+        "any_estimated": false,
+        "max_uncertainty_pct": 100.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD Ryzen 7 7435HS",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9",
+          "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+          "gpu_count": 1
+        }
+      },
+      "final_training": {
+        "n_measurements": 1,
+        "total_duration_s": 0.0021885999012738466,
+        "mean_duration_s": 0.0021885999012738466,
+        "median_duration_s": 0.0021885999012738466,
+        "total_energy_kwh": 1.1692525952551743e-05,
+        "total_energy_joules": 42.093093429186276,
+        "mean_energy_kwh": 1.1692525952551743e-05,
+        "median_energy_kwh": 1.1692525952551743e-05,
+        "ci_95_energy_kwh": [
+          1.1692525952551743e-05,
+          1.1692525952551743e-05
+        ],
+        "mean_energy_joules": 42.093093429186276,
+        "median_energy_joules": 42.093093429186276,
+        "outlier_count": 0,
+        "total_co2_kg": 8.18476816678622e-06,
+        "mean_co2_kg": 8.18476816678622e-06,
+        "median_co2_kg": 8.18476816678622e-06,
+        "any_estimated": false,
+        "max_uncertainty_pct": 100.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD Ryzen 7 7435HS",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9",
+          "gpu_model": "1 x NVIDIA GeForce RTX 4060 Laptop GPU",
+          "gpu_count": 1
+        }
+      },
+      "total_pipeline": {
+        "n_measurements": 19,
+        "total_duration_s": 22.356771000195295,
+        "mean_duration_s": 1.1766721579050154,
+        "median_duration_s": 0.461695599835366,
+        "total_energy_kwh": 0.00044059152871266593,
+        "total_energy_joules": 1586.1295033655974,
+        "mean_energy_kwh": 2.318902782698242e-05,
+        "median_energy_kwh": 1.5599177400086758e-05,
+        "ci_95_energy_kwh": [
+          1.6058759088406222e-05,
+          3.405744618220861e-05
+        ],
+        "mean_energy_joules": 83.4805001771367,
+        "median_energy_joules": 56.15703864031233,
+        "outlier_count": 2,
+        "total_co2_kg": 0.0003084140700988661,
+        "mean_co2_kg": 1.6232319478887687e-05,
+        "median_co2_kg": 1.091942418006073e-05,
+        "any_estimated": false,
+        "max_uncertainty_pct": 100.0,
+        "hardware_specs": {
+          "cpu_count": 16,
+          "cpu_model": "AMD64 Family 25 Model 68 Stepping 1, AuthenticAMD",
+          "ram_gb": 23.69,
+          "os": "Windows-10-10.0.26300-SP0",
+          "machine": "AMD64",
+          "python_version": "3.10.9"
+        },
+        "is_aggregated_from_phases": true
+      }
+    }
+  },
+  "feature_selection": {
+    "selected_features": [
+      "Mid-Upper Arm Circumference (cm)",
+      "Weight (kg)",
+      "Gender",
+      "Height (cm)"
+    ],
+    "scores": {
+      "Age (months)": 0.0,
+      "Height (cm)": 0.031035001941787543,
+      "Weight (kg)": 0.037494100163140365,
+      "Mid-Upper Arm Circumference (cm)": 0.8770089651245975,
+      "Gender": 0.03193237899734469,
+      "Subdivision (West Bengal)": 0.0,
+      "Mother's Education": 0.007882094565093256
+    },
+    "ranking": [
+      "Mid-Upper Arm Circumference (cm)",
+      "Weight (kg)",
+      "Gender",
+      "Height (cm)",
+      "Mother's Education",
+      "Subdivision (West Bengal)",
+      "Age (months)"
+    ],
+    "k_selected": 4
+  },
+  "ablation": {
+    "conditions": {
+      "full_features_no_opt": {
+        "metrics": {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "weighted_f1": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_precision": 1.0,
+          "macro_recall": 1.0,
+          "per_class_recall": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 1.0
+          },
+          "confusion_matrix": [
+            [
+              42,
+              0,
+              0
+            ],
+            [
+              0,
+              131,
+              0
+            ],
+            [
+              0,
+              0,
+              27
+            ]
+          ],
+          "roc_auc_ovr": 1.0,
+          "brier_score": 0.0,
+          "log_loss": 2.220446049250313e-16,
+          "ece": 0.0
+        },
+        "primary_metric": "macro_f1",
+        "primary_score": 1.0,
+        "training_time": 0.001367,
+        "estimated_energy_joules": 0.013674,
+        "is_estimated_energy": true,
+        "n_features_used": 7,
+        "notes": "All features, default hyperparameters",
+        "delta_vs_baseline": 0.0,
+        "energy_delta_vs_baseline": 0.0,
+        "helps_or_hurts": "baseline"
+      },
+      "feature_selection_only": {
+        "metrics": {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "weighted_f1": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_precision": 1.0,
+          "macro_recall": 1.0,
+          "per_class_recall": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 1.0
+          },
+          "confusion_matrix": [
+            [
+              42,
+              0,
+              0
+            ],
+            [
+              0,
+              131,
+              0
+            ],
+            [
+              0,
+              0,
+              27
+            ]
+          ],
+          "roc_auc_ovr": 1.0,
+          "brier_score": 0.0,
+          "log_loss": 2.220446049250313e-16,
+          "ece": 0.0
+        },
+        "primary_metric": "macro_f1",
+        "primary_score": 1.0,
+        "training_time": 0.001629,
+        "estimated_energy_joules": 0.016294,
+        "is_estimated_energy": true,
+        "n_features_used": 4,
+        "notes": "MI feature selection (train only), default hyperparameters",
+        "selected_features": [
+          "f3",
+          "f2",
+          "f4",
+          "f1"
+        ],
+        "delta_vs_baseline": 0.0,
+        "energy_delta_vs_baseline": 0.00262,
+        "helps_or_hurts": "neutral"
+      },
+      "pca_disabled": {
+        "metrics": {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "weighted_f1": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_precision": 1.0,
+          "macro_recall": 1.0,
+          "per_class_recall": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 1.0
+          },
+          "confusion_matrix": [
+            [
+              42,
+              0,
+              0
+            ],
+            [
+              0,
+              131,
+              0
+            ],
+            [
+              0,
+              0,
+              27
+            ]
+          ],
+          "roc_auc_ovr": 1.0,
+          "brier_score": 0.0,
+          "log_loss": 2.220446049250313e-16,
+          "ece": 0.0
+        },
+        "primary_metric": "macro_f1",
+        "primary_score": 1.0,
+        "training_time": 0.001835,
+        "estimated_energy_joules": 0.018347,
+        "is_estimated_energy": true,
+        "n_features_used": 7,
+        "notes": "PCA disabled (original feature space), default hyperparameters",
+        "pca_applied": false,
+        "delta_vs_baseline": 0.0,
+        "energy_delta_vs_baseline": 0.004673,
+        "helps_or_hurts": "hurts"
+      },
+      "pca_enabled": {
+        "metrics": {
+          "accuracy": 0.615,
+          "macro_f1": 0.45812803136484265,
+          "weighted_f1": 0.5984063028306386,
+          "balanced_accuracy": 0.46833474696070115,
+          "macro_precision": 0.45728263724717627,
+          "macro_recall": 0.46833474696070115,
+          "per_class_recall": {
+            "0": 0.16666666666666666,
+            "1": 0.7938931297709924,
+            "2": 0.4444444444444444
+          },
+          "confusion_matrix": [
+            [
+              7,
+              26,
+              9
+            ],
+            [
+              16,
+              104,
+              11
+            ],
+            [
+              4,
+              11,
+              12
+            ]
+          ],
+          "roc_auc_ovr": 0.6044305236544891,
+          "brier_score": 0.77,
+          "log_loss": 13.876806554810106,
+          "ece": 0.385
+        },
+        "primary_metric": "macro_f1",
+        "primary_score": 0.45812803136484265,
+        "training_time": 0.004751,
+        "estimated_energy_joules": 0.047514,
+        "is_estimated_energy": true,
+        "n_features_used": 4,
+        "notes": "PCA enabled (n_components=4, train only)",
+        "pca_applied": true,
+        "n_components": 4,
+        "explained_variance_ratio": 0.8478,
+        "delta_vs_baseline": -0.541872,
+        "energy_delta_vs_baseline": 0.03384,
+        "helps_or_hurts": "hurts"
+      },
+      "early_stopping_disabled": {
+        "metrics": {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "weighted_f1": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_precision": 1.0,
+          "macro_recall": 1.0,
+          "per_class_recall": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 1.0
+          },
+          "confusion_matrix": [
+            [
+              42,
+              0,
+              0
+            ],
+            [
+              0,
+              131,
+              0
+            ],
+            [
+              0,
+              0,
+              27
+            ]
+          ],
+          "roc_auc_ovr": 1.0,
+          "brier_score": 0.0,
+          "log_loss": 2.220446049250313e-16,
+          "ece": 0.0
+        },
+        "primary_metric": "macro_f1",
+        "primary_score": 1.0,
+        "training_time": 0.001483,
+        "estimated_energy_joules": 0.014829,
+        "is_estimated_energy": true,
+        "n_features_used": 7,
+        "notes": "Full iteration/estimator budget without early stopping",
+        "early_stopping": false,
+        "delta_vs_baseline": 0.0,
+        "energy_delta_vs_baseline": 0.001155,
+        "helps_or_hurts": "neutral"
+      },
+      "hpo_only": {
+        "metrics": {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "weighted_f1": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_precision": 1.0,
+          "macro_recall": 1.0,
+          "per_class_recall": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 1.0
+          },
+          "confusion_matrix": [
+            [
+              42,
+              0,
+              0
+            ],
+            [
+              0,
+              131,
+              0
+            ],
+            [
+              0,
+              0,
+              27
+            ]
+          ],
+          "roc_auc_ovr": 1.0,
+          "brier_score": 0.0,
+          "log_loss": 2.220446049250313e-16,
+          "ece": 0.0
+        },
+        "primary_metric": "macro_f1",
+        "primary_score": 1.0,
+        "training_time": 0.001346,
+        "estimated_energy_joules": 0.013456,
+        "is_estimated_energy": true,
+        "n_features_used": 7,
+        "notes": "All features, Optuna HPO (10 trials on train CV only)",
+        "best_params": {
+          "max_depth": 7,
+          "min_samples_split": 29
+        },
+        "best_cv_score": 1.0,
+        "hpo_trials": 10,
+        "hpo_duration_seconds": 0.131,
+        "delta_vs_baseline": 0.0,
+        "energy_delta_vs_baseline": -0.000218,
+        "helps_or_hurts": "neutral"
+      },
+      "full_pipeline": {
+        "metrics": {
+          "accuracy": 1.0,
+          "macro_f1": 1.0,
+          "weighted_f1": 1.0,
+          "balanced_accuracy": 1.0,
+          "macro_precision": 1.0,
+          "macro_recall": 1.0,
+          "per_class_recall": {
+            "0": 1.0,
+            "1": 1.0,
+            "2": 1.0
+          },
+          "confusion_matrix": [
+            [
+              42,
+              0,
+              0
+            ],
+            [
+              0,
+              131,
+              0
+            ],
+            [
+              0,
+              0,
+              27
+            ]
+          ],
+          "roc_auc_ovr": 1.0,
+          "brier_score": 0.0,
+          "log_loss": 2.220446049250313e-16,
+          "ece": 0.0
+        },
+        "primary_metric": "macro_f1",
+        "primary_score": 1.0,
+        "training_time": 0.001365,
+        "estimated_energy_joules": 0.013646,
+        "is_estimated_energy": true,
+        "n_features_used": 4,
+        "notes": "MI feature selection + Optuna HPO (10 trials on train CV only)",
+        "selected_features": [
+          "f3",
+          "f2",
+          "f4",
+          "f1"
+        ],
+        "best_params": {
+          "max_depth": 7,
+          "min_samples_split": 29
+        },
+        "best_cv_score": 1.0,
+        "hpo_trials": 10,
+        "hpo_duration_seconds": 0.1372,
+        "delta_vs_baseline": 0.0,
+        "energy_delta_vs_baseline": -2.8e-05,
+        "helps_or_hurts": "neutral"
+      }
+    },
+    "full_features_no_opt": {
+      "metrics": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "balanced_accuracy": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "per_class_recall": {
+          "0": 1.0,
+          "1": 1.0,
+          "2": 1.0
+        },
+        "confusion_matrix": [
+          [
+            42,
+            0,
+            0
+          ],
+          [
+            0,
+            131,
+            0
+          ],
+          [
+            0,
+            0,
+            27
+          ]
+        ],
+        "roc_auc_ovr": 1.0,
+        "brier_score": 0.0,
+        "log_loss": 2.220446049250313e-16,
+        "ece": 0.0
+      },
+      "primary_metric": "macro_f1",
+      "primary_score": 1.0,
+      "training_time": 0.001367,
+      "estimated_energy_joules": 0.013674,
+      "is_estimated_energy": true,
+      "n_features_used": 7,
+      "notes": "All features, default hyperparameters",
+      "delta_vs_baseline": 0.0,
+      "energy_delta_vs_baseline": 0.0,
+      "helps_or_hurts": "baseline"
+    },
+    "feature_selection_only": {
+      "metrics": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "balanced_accuracy": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "per_class_recall": {
+          "0": 1.0,
+          "1": 1.0,
+          "2": 1.0
+        },
+        "confusion_matrix": [
+          [
+            42,
+            0,
+            0
+          ],
+          [
+            0,
+            131,
+            0
+          ],
+          [
+            0,
+            0,
+            27
+          ]
+        ],
+        "roc_auc_ovr": 1.0,
+        "brier_score": 0.0,
+        "log_loss": 2.220446049250313e-16,
+        "ece": 0.0
+      },
+      "primary_metric": "macro_f1",
+      "primary_score": 1.0,
+      "training_time": 0.001629,
+      "estimated_energy_joules": 0.016294,
+      "is_estimated_energy": true,
+      "n_features_used": 4,
+      "notes": "MI feature selection (train only), default hyperparameters",
+      "selected_features": [
+        "f3",
+        "f2",
+        "f4",
+        "f1"
+      ],
+      "delta_vs_baseline": 0.0,
+      "energy_delta_vs_baseline": 0.00262,
+      "helps_or_hurts": "neutral"
+    },
+    "pca_disabled": {
+      "metrics": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "balanced_accuracy": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "per_class_recall": {
+          "0": 1.0,
+          "1": 1.0,
+          "2": 1.0
+        },
+        "confusion_matrix": [
+          [
+            42,
+            0,
+            0
+          ],
+          [
+            0,
+            131,
+            0
+          ],
+          [
+            0,
+            0,
+            27
+          ]
+        ],
+        "roc_auc_ovr": 1.0,
+        "brier_score": 0.0,
+        "log_loss": 2.220446049250313e-16,
+        "ece": 0.0
+      },
+      "primary_metric": "macro_f1",
+      "primary_score": 1.0,
+      "training_time": 0.001835,
+      "estimated_energy_joules": 0.018347,
+      "is_estimated_energy": true,
+      "n_features_used": 7,
+      "notes": "PCA disabled (original feature space), default hyperparameters",
+      "pca_applied": false,
+      "delta_vs_baseline": 0.0,
+      "energy_delta_vs_baseline": 0.004673,
+      "helps_or_hurts": "hurts"
+    },
+    "pca_enabled": {
+      "metrics": {
+        "accuracy": 0.615,
+        "macro_f1": 0.45812803136484265,
+        "weighted_f1": 0.5984063028306386,
+        "balanced_accuracy": 0.46833474696070115,
+        "macro_precision": 0.45728263724717627,
+        "macro_recall": 0.46833474696070115,
+        "per_class_recall": {
+          "0": 0.16666666666666666,
+          "1": 0.7938931297709924,
+          "2": 0.4444444444444444
+        },
+        "confusion_matrix": [
+          [
+            7,
+            26,
+            9
+          ],
+          [
+            16,
+            104,
+            11
+          ],
+          [
+            4,
+            11,
+            12
+          ]
+        ],
+        "roc_auc_ovr": 0.6044305236544891,
+        "brier_score": 0.77,
+        "log_loss": 13.876806554810106,
+        "ece": 0.385
+      },
+      "primary_metric": "macro_f1",
+      "primary_score": 0.45812803136484265,
+      "training_time": 0.004751,
+      "estimated_energy_joules": 0.047514,
+      "is_estimated_energy": true,
+      "n_features_used": 4,
+      "notes": "PCA enabled (n_components=4, train only)",
+      "pca_applied": true,
+      "n_components": 4,
+      "explained_variance_ratio": 0.8478,
+      "delta_vs_baseline": -0.541872,
+      "energy_delta_vs_baseline": 0.03384,
+      "helps_or_hurts": "hurts"
+    },
+    "early_stopping_disabled": {
+      "metrics": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "balanced_accuracy": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "per_class_recall": {
+          "0": 1.0,
+          "1": 1.0,
+          "2": 1.0
+        },
+        "confusion_matrix": [
+          [
+            42,
+            0,
+            0
+          ],
+          [
+            0,
+            131,
+            0
+          ],
+          [
+            0,
+            0,
+            27
+          ]
+        ],
+        "roc_auc_ovr": 1.0,
+        "brier_score": 0.0,
+        "log_loss": 2.220446049250313e-16,
+        "ece": 0.0
+      },
+      "primary_metric": "macro_f1",
+      "primary_score": 1.0,
+      "training_time": 0.001483,
+      "estimated_energy_joules": 0.014829,
+      "is_estimated_energy": true,
+      "n_features_used": 7,
+      "notes": "Full iteration/estimator budget without early stopping",
+      "early_stopping": false,
+      "delta_vs_baseline": 0.0,
+      "energy_delta_vs_baseline": 0.001155,
+      "helps_or_hurts": "neutral"
+    },
+    "hpo_only": {
+      "metrics": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "balanced_accuracy": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "per_class_recall": {
+          "0": 1.0,
+          "1": 1.0,
+          "2": 1.0
+        },
+        "confusion_matrix": [
+          [
+            42,
+            0,
+            0
+          ],
+          [
+            0,
+            131,
+            0
+          ],
+          [
+            0,
+            0,
+            27
+          ]
+        ],
+        "roc_auc_ovr": 1.0,
+        "brier_score": 0.0,
+        "log_loss": 2.220446049250313e-16,
+        "ece": 0.0
+      },
+      "primary_metric": "macro_f1",
+      "primary_score": 1.0,
+      "training_time": 0.001346,
+      "estimated_energy_joules": 0.013456,
+      "is_estimated_energy": true,
+      "n_features_used": 7,
+      "notes": "All features, Optuna HPO (10 trials on train CV only)",
+      "best_params": {
+        "max_depth": 7,
+        "min_samples_split": 29
+      },
+      "best_cv_score": 1.0,
+      "hpo_trials": 10,
+      "hpo_duration_seconds": 0.131,
+      "delta_vs_baseline": 0.0,
+      "energy_delta_vs_baseline": -0.000218,
+      "helps_or_hurts": "neutral"
+    },
+    "full_pipeline": {
+      "metrics": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "balanced_accuracy": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "per_class_recall": {
+          "0": 1.0,
+          "1": 1.0,
+          "2": 1.0
+        },
+        "confusion_matrix": [
+          [
+            42,
+            0,
+            0
+          ],
+          [
+            0,
+            131,
+            0
+          ],
+          [
+            0,
+            0,
+            27
+          ]
+        ],
+        "roc_auc_ovr": 1.0,
+        "brier_score": 0.0,
+        "log_loss": 2.220446049250313e-16,
+        "ece": 0.0
+      },
+      "primary_metric": "macro_f1",
+      "primary_score": 1.0,
+      "training_time": 0.001365,
+      "estimated_energy_joules": 0.013646,
+      "is_estimated_energy": true,
+      "n_features_used": 4,
+      "notes": "MI feature selection + Optuna HPO (10 trials on train CV only)",
+      "selected_features": [
+        "f3",
+        "f2",
+        "f4",
+        "f1"
+      ],
+      "best_params": {
+        "max_depth": 7,
+        "min_samples_split": 29
+      },
+      "best_cv_score": 1.0,
+      "hpo_trials": 10,
+      "hpo_duration_seconds": 0.1372,
+      "delta_vs_baseline": 0.0,
+      "energy_delta_vs_baseline": -2.8e-05,
+      "helps_or_hurts": "neutral"
+    },
+    "baseline_condition": "full_features_no_opt",
+    "primary_metric": "macro_f1",
+    "model_name": "decision_tree",
+    "task_type": "classification",
+    "helpful_optimizations": [],
+    "harmful_optimizations": [
+      "pca_disabled",
+      "pca_enabled"
+    ],
+    "neutral_optimizations": [
+      "feature_selection_only",
+      "early_stopping_disabled",
+      "hpo_only",
+      "full_pipeline"
+    ],
+    "optimization_assessment": {
+      "full_features_no_opt": {
+        "verdict": "baseline",
+        "quality_delta": 0.0,
+        "energy_delta_joules": 0.0
+      },
+      "feature_selection_only": {
+        "verdict": "neutral",
+        "quality_delta": 0.0,
+        "energy_delta_joules": 0.00262
+      },
+      "pca_disabled": {
+        "verdict": "hurts",
+        "quality_delta": 0.0,
+        "energy_delta_joules": 0.004673
+      },
+      "pca_enabled": {
+        "verdict": "hurts",
+        "quality_delta": -0.541872,
+        "energy_delta_joules": 0.03384
+      },
+      "early_stopping_disabled": {
+        "verdict": "neutral",
+        "quality_delta": 0.0,
+        "energy_delta_joules": 0.001155
+      },
+      "hpo_only": {
+        "verdict": "neutral",
+        "quality_delta": 0.0,
+        "energy_delta_joules": -0.000218
+      },
+      "full_pipeline": {
+        "verdict": "neutral",
+        "quality_delta": 0.0,
+        "energy_delta_joules": -2.8e-05
+      }
+    },
+    "pca_comparison": {
+      "pca_disabled_score": 1.0,
+      "pca_enabled_score": 0.45812803136484265,
+      "score_delta": -0.541872,
+      "pca_disabled_energy_j": 0.018347,
+      "pca_enabled_energy_j": 0.047514,
+      "pca_helps": false
+    },
+    "early_stopping_comparison": {
+      "supported": false,
+      "early_stopping_disabled_score": 1.0,
+      "early_stopping_disabled_energy_j": 0.014829,
+      "note": "Model 'decision_tree' does not support built-in early stopping."
+    },
+    "leave_one_feature_out": {
+      "features_evaluated": 7,
+      "per_feature": {
+        "f0": {
+          "score_without_feature": 1.0,
+          "delta_when_removed": 0.0,
+          "feature_contribution": -0.0,
+          "training_time": 0.001628,
+          "estimated_energy_joules": 0.016279,
+          "impact": "neutral_feature"
+        },
+        "f1": {
+          "score_without_feature": 1.0,
+          "delta_when_removed": 0.0,
+          "feature_contribution": -0.0,
+          "training_time": 0.001259,
+          "estimated_energy_joules": 0.012586,
+          "impact": "neutral_feature"
+        },
+        "f2": {
+          "score_without_feature": 1.0,
+          "delta_when_removed": 0.0,
+          "feature_contribution": -0.0,
+          "training_time": 0.001842,
+          "estimated_energy_joules": 0.018418,
+          "impact": "neutral_feature"
+        },
+        "f3": {
+          "score_without_feature": 0.38039267651670755,
+          "delta_when_removed": -0.619607,
+          "feature_contribution": 0.619607,
+          "training_time": 0.0052,
+          "estimated_energy_joules": 0.052002,
+          "impact": "helpful_feature"
+        },
+        "f4": {
+          "score_without_feature": 1.0,
+          "delta_when_removed": 0.0,
+          "feature_contribution": -0.0,
+          "training_time": 0.001338,
+          "estimated_energy_joules": 0.013383,
+          "impact": "neutral_feature"
+        },
+        "f5": {
+          "score_without_feature": 1.0,
+          "delta_when_removed": 0.0,
+          "feature_contribution": -0.0,
+          "training_time": 0.001475,
+          "estimated_energy_joules": 0.014755,
+          "impact": "neutral_feature"
+        },
+        "f6": {
+          "score_without_feature": 1.0,
+          "delta_when_removed": 0.0,
+          "feature_contribution": -0.0,
+          "training_time": 0.00152,
+          "estimated_energy_joules": 0.015199,
+          "impact": "neutral_feature"
+        }
+      }
+    },
+    "complexity_comparison": {
+      "dummy": {
+        "complexity_tier": "trivial_baseline",
+        "primary_score": 0.2638469284994965,
+        "training_time": 0.000282,
+        "estimated_energy_joules": 0.002824
+      },
+      "logistic_regression": {
+        "complexity_tier": "low_complexity_linear",
+        "primary_score": 0.9586905394780532,
+        "training_time": 0.017922,
+        "estimated_energy_joules": 0.179222
+      },
+      "decision_tree": {
+        "complexity_tier": "low_complexity_tree",
+        "primary_score": 1.0,
+        "training_time": 0.001303,
+        "estimated_energy_joules": 0.013025
+      },
+      "random_forest": {
+        "complexity_tier": "medium_complexity_ensemble",
+        "primary_score": 1.0,
+        "training_time": 0.236047,
+        "estimated_energy_joules": 2.360467
+      },
+      "extra_trees": {
+        "complexity_tier": "medium_complexity_ensemble",
+        "primary_score": 0.9576417896593336,
+        "training_time": 0.152909,
+        "estimated_energy_joules": 1.529088
+      },
+      "lightgbm": {
+        "complexity_tier": "high_efficiency_boosting",
+        "primary_score": 1.0,
+        "training_time": 0.036797,
+        "estimated_energy_joules": 0.367966
+      }
+    },
+    "summary": "Baseline (macro_f1=1.0000). Helpful optimizations: none. Harmful optimizations: ['pca_disabled', 'pca_enabled']. Neutral optimizations: ['feature_selection_only', 'early_stopping_disabled', 'hpo_only', 'full_pipeline'].",
+    "energy_estimation_note": "Estimated energy uses training_time * 10.0 W rough proxy; use EnergyMonitor/CarbonCalculator for measured energy."
+  },
+  "carbon_passport": {
+    "model_id": "f9e394f1-0bcd-46d2-b978-702a2061764f",
+    "model_name": "decision_tree",
+    "framework_version": "carbon_automl 1.0.0",
+    "generated_at": "2026-11-11T19:30:47.425951+00:00",
+    "dataset_hash": "c68a778e13cc257f80f9edb8c44ea2b42eb9c30fcbbcbb9cce3d4c4bbb1d7ca8",
+    "dataset_fingerprint": {
+      "hash": "c68a778e13cc257f80f9edb8c44ea2b42eb9c30fcbbcbb9cce3d4c4bbb1d7ca8",
+      "sha256": "c68a778e13cc257f80f9edb8c44ea2b42eb9c30fcbbcbb9cce3d4c4bbb1d7ca8",
+      "md5": "a71634e156e782451f97d56bdf5299d1",
+      "source_path": "D:\\MYSELF\\GRP\\Carbon-Emission\\datasets\\child_health_westbengal_1000.csv",
+      "row_count": 1000,
+      "col_count": 8,
+      "columns": [
+        "Age (months)",
+        "Gender",
+        "Height (cm)",
+        "Weight (kg)",
+        "Subdivision (West Bengal)",
+        "Mother's Education",
+        "Mid-Upper Arm Circumference (cm)",
+        "Malnutrition Status"
+      ],
+      "schema": {
+        "Age (months)": "int64",
+        "Gender": "object",
+        "Height (cm)": "float64",
+        "Weight (kg)": "float64",
+        "Subdivision (West Bengal)": "object",
+        "Mother's Education": "object",
+        "Mid-Upper Arm Circumference (cm)": "float64",
+        "Malnutrition Status": "object"
+      },
+      "dtypes": {
+        "Age (months)": "int64",
+        "Gender": "object",
+        "Height (cm)": "float64",
+        "Weight (kg)": "float64",
+        "Subdivision (West Bengal)": "object",
+        "Mother's Education": "object",
+        "Mid-Upper Arm Circumference (cm)": "float64",
+        "Malnutrition Status": "object"
+      }
+    },
+    "feature_schema": {
+      "Age (months)": "int64",
+      "Gender": "object",
+      "Height (cm)": "float64",
+      "Weight (kg)": "float64",
+      "Subdivision (West Bengal)": "object",
+      "Mother's Education": "object",
+      "Mid-Upper Arm Circumference (cm)": "float64",
+      "Malnutrition Status": "object"
+    },
+    "training_config": {
+      "model_type": "decision_tree",
+      "hyperparameters": {}
+    },
+    "hardware": {
+      "cpu_count": 16,
+      "ram_gb": 23.69,
+      "os": "Windows-10-10.0.26300-SP0",
+      "python_version": "3.10.9",
+      "sklearn_version": "1.7.2"
+    },
+    "training_duration_seconds": 0.3927912001963705,
+    "training_energy_kwh": {
+      "value": 1.392833328074961e-05,
+      "is_estimated": true,
+      "measurement_method": "process_time_estimation"
+    },
+    "training_co2_kg_estimate": {
+      "value": 9.749833296524727e-06,
+      "carbon_intensity_used": 0.7
+    },
+    "carbon_intensity_assumption": {
+      "value_kg_per_kwh": 0.7,
+      "source": "user_configured",
+      "caveat": "This is a country-level annual average. Real-time regional values may differ significantly. For procurement decisions, use regional/real-time data (e.g., Electricity Maps API)."
+    },
+    "inference_energy_per_1k_predictions_kwh": 9.62440012724443e-06,
+    "inference_latency": {
+      "p50_ms": 0.4350666422396898,
+      "p99_ms": null
+    },
+    "predictive_metrics": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "weighted_f1": 1.0,
+      "balanced_accuracy": 1.0,
+      "macro_precision": 1.0,
+      "macro_recall": 1.0,
+      "per_class_recall": {
+        "0": 1.0,
+        "1": 1.0,
+        "2": 1.0
+      },
+      "confusion_matrix": [
+        [
+          42,
+          0,
+          0
+        ],
+        [
+          0,
+          131,
+          0
+        ],
+        [
+          0,
+          0,
+          27
+        ]
+      ],
+      "roc_auc_ovr": 1.0,
+      "brier_score": 0.0,
+      "log_loss": 2.220446049250313e-16,
+      "ece": 0.0,
+      "cv_mean": 1.0
+    },
+    "confidence_intervals": {},
+    "validation_methodology": "5-fold stratified_kfold on 80% train split; evaluated once on 20% holdout test split.",
+    "known_limitations": [
+      "Grid carbon intensity (0.7 kg CO2e/kWh, user_configured) is static.",
+      "Sub-second CPU energy measurements carry \u00b150\u2013100% uncertainty from background noise.",
+      "Critical target leakage warning(s) were active during this run."
+    ]
+  },
+  "model_id": "2efcd03e-7673-4965-8445-7a01d6e61f44",
+  "experiment_file": "D:\\MYSELF\\GRP\\Carbon-Emission\\experiments\\experiment_20261111_193047.json",
+  "html_report": "D:\\MYSELF\\GRP\\Carbon-Emission\\experiments\\report_20261111_193047.html",
+  "pdf_report": "D:\\MYSELF\\GRP\\Carbon-Emission\\experiments\\report_20261111_193047.pdf",
+  "charts_dir": "D:\\MYSELF\\GRP\\Carbon-Emission\\experiments\\charts_20261111_193047"
+}

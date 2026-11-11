@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "last_updated": "2026-11-11T19:30:47.428043+00:00",
+  "models": {
+    "2efcd03e-7673-4965-8445-7a01d6e61f44": {
+      "registry_id": "2efcd03e-7673-4965-8445-7a01d6e61f44",
+      "model_name": "decision_tree",
+      "artifact_path": "D:\\MYSELF\\GRP\\Carbon-Emission\\models\\decision_tree_c8ea14869ec1.joblib",
+      "metrics": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "balanced_accuracy": 1.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "roc_auc_ovr": 1.0,
+        "brier_score": 0.0,
+        "log_loss": 2.220446049250313e-16,
+        "ece": 0.0,
+        "cv_score": 1.0
+      },
+      "carbon_passport_path": "D:\\MYSELF\\GRP\\Carbon-Emission\\experiments\\carbon_passport_decision_tree_20261111_193047.json",
+      "experiment_hash": "c8ea14869ec1a9097b1cdd28b2259d7e2507e19fcd448085a467484774af0f9c",
+      "registered_at": "2026-11-11T19:30:47.428043+00:00"
+    }
+  }
+}

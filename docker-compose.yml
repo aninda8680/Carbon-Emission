@@ -1,0 +1,35 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: carbon-automl-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./experiments:/app/experiments
+      - ./models:/app/models
+      - ./datasets:/app/datasets
+      - ./config.yaml:/app/config.yaml:ro
+    command: ["uvicorn", "carbon_automl.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    restart: unless-stopped
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: carbon-automl-dashboard
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./experiments:/app/experiments
+      - ./models:/app/models
+      - ./datasets:/app/datasets
+      - ./config.yaml:/app/config.yaml:ro
+    command: [
+      "streamlit", "run", "carbon_automl/dashboard/app.py",
+      "--server.port=8501", "--server.address=0.0.0.0", "--server.headless=true"
+    ]
+    depends_on:
+      - api
+    restart: unless-stopped
